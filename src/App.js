@@ -1,36 +1,32 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
-import Home from './Home/Home'
-import './App.css';
+import React,{ Component } from 'react';
+import './App.less';
+import ComponentTree from './ComponentTree/ComponentTree';
 
-function App() {
-  return (
-    <div className="App">
-      <Router>
-        <div>
-          <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-          </ul>
-          <hr/>
-          <Route exact path="/home" component={Home}/>
+class App extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      showComponent: null
+    }
+  }
+  getComponent = (showComponent) => {
+    this.setState({
+      showComponent
+    })
+  }
+  render(){
+    return (
+      <div className="App">
+        <div className='componentList'>
+          <div className='header'>JView</div>
+          <ComponentTree compConent = {this.getComponent}/>
         </div>
-      </Router>
-    </div>
-  );
-}
-
-function getValue(state){
-  let { initData } = state.rootReducer;
-  console.log(initData);
-  return{
-    initData
+        <div className='content'>
+          { this.state.showComponent }
+        </div>
+      </div>
+    )
   }
 }
-export default connect(getValue)(App);
+
+export default App;
