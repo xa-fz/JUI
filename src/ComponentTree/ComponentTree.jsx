@@ -30,10 +30,11 @@ class ComponentTree extends Component{
             ]
         }
     }
+
     /**
      * @method 展开组件列表
      */
-    showList = (comInfo) => {
+    showList = comInfo => {
         let { componentList } = this.state;
         let arr = [...componentList];
         arr.forEach((item) => {
@@ -45,12 +46,14 @@ class ComponentTree extends Component{
             componentList : arr
         })
     }
+
     /**
      * @method 展示组件内容
      */
-    showContent = (child) => {
+    showContent = child => {
         this.props.compConent(child.component);
     }
+
     render(){
         let { componentList } = this.state;
         return (

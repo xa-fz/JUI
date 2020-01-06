@@ -9,7 +9,7 @@ class App extends Component{
       showComponent: null
     }
   }
-  getComponent = (showComponent) => {
+  getComponent = showComponent => {
     this.setState({
       showComponent
     })
@@ -18,7 +18,7 @@ class App extends Component{
     return (
       <div className="App">
         <div className='componentList'>
-          <div className='header'>JView</div>
+          <div className='header'>JUI</div>
           <ComponentTree compConent = {this.getComponent}/>
         </div>
         <div className='content'>
