@@ -8,9 +8,11 @@ export default class ButtonContent extends Component{
 
         }
     }
+
     handleClick = () => {
         console.log('点击按钮');
     }
+    
     render(){
         return (
             <div className='buttonContent'>
@@ -21,7 +23,11 @@ export default class ButtonContent extends Component{
                 <div className='basicUsing'>
                     <div className='title'>基础用法</div>
                     <div className='content'>
-                        <Button type='Primary'></Button>
+                        <Button type='Primary'/>
+                        &nbsp;&nbsp;
+                        <Button type='Default'/>
+                        &nbsp;&nbsp;
+                        <Button type='Danger'/>
                     </div>
                 </div>
                 
