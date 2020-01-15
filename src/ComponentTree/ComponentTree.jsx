@@ -10,7 +10,7 @@ class ComponentTree extends Component{
             componentList : [
                 {
                     id: '00',
-                    compType: 'Basic component',
+                    compType: '基础组件',
                     listState: false,
                     childern: [
                         {
@@ -21,7 +21,7 @@ class ComponentTree extends Component{
                     ]
                 },{
                     id: '01',
-                    compType: 'Advanced component',
+                    compType: '高级组件',
                     listStatus: false,
                     childern: [
                         
@@ -63,7 +63,6 @@ class ComponentTree extends Component{
                         <div key={ item.id }>
                             <div className='Tree_type' onClick={() => this.showList(item)}>
                                 {item.compType}
-                                <span> {item.childern.length === 0 ? null : item.childern.length}</span>
                                 <img alt={'暂无图片'} src={!item.listState ? J_ICONS.ArrowDown: J_ICONS.ArrowUp} 
                                     className='IconStyle'/>
                             </div>

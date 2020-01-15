@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../../Components/Button';
+import RESOURCE from '../../resource';
+import Code from '../Coding';
 
 export default class ButtonContent extends Component{
     constructor(props){
@@ -18,16 +20,16 @@ export default class ButtonContent extends Component{
             <div className='buttonContent'>
                 <div className='header'>
                     <div className='text'>Button 按钮</div>
-                    <div>用户触发点击事件</div>
                 </div>
                 <div className='basicUsing'>
-                    <div className='title'>基础用法</div>
+                    <div className='title'>{ RESOURCE.BTN_TITLE_ARR[0] }</div>
                     <div className='content'>
                         <Button type='Primary'/>
                         &nbsp;&nbsp;
                         <Button type='Default'/>
                         &nbsp;&nbsp;
                         <Button type='Danger'/>
+                        <Code></Code>
                     </div>
                 </div>
                 

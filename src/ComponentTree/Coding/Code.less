@@ -1,0 +1,49 @@
+/*
+*代码显示部分的样式
+*/
+
+@-webkit-keyframes title {
+    0%{
+        -webkit-transform:translate(2px, 2px);
+    }
+    25%{
+        -webkit-transform:translate(-2px, -2px);
+    }
+    50%{
+        -webkit-transform:translate(0px, 0px);
+    }
+    75%{
+        -webkit-transform:translate(2px, -2px);
+    }
+    100%{
+        -webkit-transform:translate(-2px, 2px);
+    }
+}
+@keyframes title {
+    0%{
+        transform:translate(2px, 2px);
+    }
+    25%{
+        transform:translate(-2px, -2px);
+    }
+    50%{
+        transform:translate(0px, 0px);
+    }
+    75%{
+        transform:translate(2px, -2px);
+    }
+    100%{
+        transform:translate(-2px, 2px);
+    }
+}
+
+.Code{
+    .title{
+        cursor: pointer;
+        &:hover{
+            color: rgb(0, 102, 255);
+            -webkit-animation: title 0.2s infinite;
+            animation: title 0.2s infinite;
+        }
+    }
+}
