@@ -1,0 +1,153 @@
+import React, { Component } from 'react';
+
+export default class CodeBtnNormal extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            
+        }
+    }
+
+    render(){
+        return (
+            <div>
+                <span>import</span>
+                &nbsp;
+                <span>React</span>
+                <sapn>,</sapn>
+                <sapn>{` { `}</sapn>
+                <sapn>Component</sapn>
+                <sapn>{` } `}</sapn>
+                <sapn>from</sapn>
+                &nbsp;
+                <sapn>'</sapn>
+                <sapn>react</sapn>
+                <sapn>'</sapn>
+                <sapn>;</sapn>
+                <br />
+                <span>import</span>
+                <sapn>{` { `}</sapn>
+                <sapn>Button</sapn>
+                <sapn>{` } `}</sapn>
+                <sapn>from</sapn>
+                &nbsp;
+                <sapn>'</sapn>
+                <sapn>JUI</sapn>
+                <sapn>'</sapn>
+                <sapn>;</sapn>
+                <br/><br/>
+                <sapn>export</sapn>
+                &nbsp;
+                <sapn>default</sapn>
+                &nbsp;
+                <sapn>class</sapn>
+                &nbsp;
+                <sapn>ButtonContent</sapn>
+                &nbsp;
+                <sapn>extends</sapn>
+                &nbsp;
+                <sapn>Component</sapn>
+                <br/>
+                <sapn>{`{`}</sapn>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>handleClick</span>
+                &nbsp;&nbsp;
+                <span>{`=`}</span>
+                &nbsp;&nbsp;
+                <sapn>{`()`}</sapn>
+                &nbsp;&nbsp;
+                <sapn>{`=>`}</sapn>
+                &nbsp;&nbsp;
+                <sapn>{`{`}</sapn>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`console.log`}</span>
+                <span>{`(`}</span>
+                <sapn>'</sapn>
+                <sapn>点击按钮</sapn>
+                <sapn>'</sapn>
+                <span>{`)`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <sapn>{`}`}</sapn>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>render</span>
+                <sapn>{`()`}</sapn>
+                <sapn>{`{`}</sapn>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>return</span>
+                &nbsp;&nbsp;
+                <span>{`(`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`<`}</span>
+                <span>div</span>
+                <span>{`>`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`<`}</span>
+                <span>Button</span>
+                &nbsp;&nbsp;
+                <span>type</span>
+                <span>{`=`}</span>
+                <sapn>'</sapn>
+                <sapn>Primary</sapn>
+                <sapn>'</sapn>
+                &nbsp;&nbsp;
+                <span>handleClick</span>
+                <span>{`=`}</span>
+                <sapn>{`{`}</sapn>
+                <span>this.handleClick</span>
+                <span>{`}`}</span>
+                &nbsp;
+                <span>{`/`}</span>
+                <span>{`>`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`<`}</span>
+                <span>Button</span>
+                &nbsp;&nbsp;
+                <span>type</span>
+                <span>{`=`}</span>
+                <sapn>'</sapn>
+                <sapn>Default</sapn>
+                <sapn>'</sapn>
+                <span>{`/`}</span>
+                <span>{`>`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`<`}</span>
+                <span>Button</span>
+                &nbsp;&nbsp;
+                <span>type</span>
+                <span>{`=`}</span>
+                <sapn>'</sapn>
+                <sapn>Danger</sapn>
+                <sapn>'</sapn>
+                <span>{`/`}</span>
+                <span>{`>`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`<`}</span>
+                <span>div</span>
+                <span>{`/`}</span>
+                <span>{`>`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>{`)`}</span>
+                <br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <sapn>{`}`}</sapn>
+                <br/>
+                <sapn>{`}`}</sapn>
+            </div>
+        )
+    }
+}
+

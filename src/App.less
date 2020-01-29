@@ -1,3 +1,37 @@
+@-webkit-keyframes header {
+  0%{
+      -webkit-transform:translate(2px, 2px);
+  }
+  25%{
+      -webkit-transform:translate(-2px, -2px);
+  }
+  50%{
+      -webkit-transform:translate(0px, 0px);
+  }
+  75%{
+      -webkit-transform:translate(2px, -2px);
+  }
+  100%{
+      -webkit-transform:translate(-2px, 2px);
+  }
+}
+@keyframes header {
+  0%{
+      transform:translate(2px, 2px);
+  }
+  25%{
+      transform:translate(-2px, -2px);
+  }
+  50%{
+      transform:translate(0px, 0px);
+  }
+  75%{
+      transform:translate(2px, -2px);
+  }
+  100%{
+      transform:translate(-2px, 2px);
+  }
+}
 .App {
   height: 100%;
   display: flex;
@@ -11,11 +45,18 @@
       line-height: 60px;
       font-weight: bold;
       font-style: italic;
+      cursor: default;
+      &:hover{
+        color: rgb(0, 102, 255);
+        -webkit-animation: header 0.2s infinite;
+        animation: header 0.2s infinite;
+      }
     }
   }
-  .content{
+  .codeContent{
     flex: 4;
     padding: 20px;
     margin: 0 100px 0 0;
   }
 }
+

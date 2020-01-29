@@ -21,7 +21,7 @@ class App extends Component{
           <div className='header'>JUI</div>
           <ComponentTree compConent = {this.getComponent}/>
         </div>
-        <div className='content'>
+        <div className='codeContent'>
           { this.state.showComponent }
         </div>
       </div>

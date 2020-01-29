@@ -24,13 +24,16 @@ export default class ButtonContent extends Component{
                 <div className='basicUsing'>
                     <div className='title'>{ RESOURCE.BTN_TITLE_ARR[0] }</div>
                     <div className='content'>
-                        <Button type='Primary'/>
-                        &nbsp;&nbsp;
-                        <Button type='Default'/>
-                        &nbsp;&nbsp;
-                        <Button type='Danger'/>
-                        <Code></Code>
+                        <div className='btnTypeNormal'>
+                            <Button type='Primary' handleClick={this.handleClick}/>
+                            &nbsp;&nbsp;
+                            <Button type='Default'/>
+                            &nbsp;&nbsp;
+                            <Button type='Danger'/>
+                        </div>
+                        <Code type='btn-normal'/>
                     </div>
+                    
                 </div>
                 
             </div>
