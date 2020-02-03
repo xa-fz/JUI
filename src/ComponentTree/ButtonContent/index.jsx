@@ -16,28 +16,48 @@ export default class ButtonContent extends Component{
     }
     
     render(){
+        RESOURCE.BTN_INFO_ARR.forEach((item) => {
+            switch(item.type){
+                case 'btn-normal':
+                item.showComponent = 
+                <div className='btnTypeNormal'>
+                    <Button type='Primary' handleClick={this.handleClick}/>
+                    &nbsp;&nbsp;
+                    <Button type='Default'/>
+                    &nbsp;&nbsp;
+                    <Button type='Danger'/>
+                </div>
+                break;
+                case 'btn-icon':
+                item.showComponent = 
+                <div className='btnIcon'>
+                    123
+                </div>
+                break;
+                default:
+                break;
+            }
+
+        })
         return (
             <div className='buttonContent'>
                 <div className='header'>
                     <div className='text'>Button 按钮</div>
                 </div>
-                <div className='basicUsing'>
-                    <div className='title'>{ RESOURCE.BTN_TITLE_ARR[0] }</div>
-                    <div className='content'>
-                        <div className='btnTypeNormal'>
-                            <Button type='Primary' handleClick={this.handleClick}/>
-                            &nbsp;&nbsp;
-                            <Button type='Default'/>
-                            &nbsp;&nbsp;
-                            <Button type='Danger'/>
+                <div className='useComponent'>
+                    {
+                        RESOURCE.BTN_INFO_ARR.map((item) => 
+                        <div className='btnUsing' key={item.type}>
+                            <div className='title'>{item.title}</div>
+                            <div className='content'>
+                                {item.showComponent}
+                                <Code type={item.type}/>
+                            </div>
                         </div>
-                        <Code type='btn-normal'/>
-                    </div>
-                    
+                        )
+                    }
                 </div>
-                
             </div>
-            
         )
     }
 }

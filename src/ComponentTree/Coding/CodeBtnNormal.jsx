@@ -14,68 +14,68 @@ export default class CodeBtnNormal extends Component{
                 <span>import</span>
                 &nbsp;
                 <span>React</span>
-                <sapn>,</sapn>
-                <sapn>{` { `}</sapn>
-                <sapn>Component</sapn>
-                <sapn>{` } `}</sapn>
-                <sapn>from</sapn>
+                <span>,</span>
+                <span>{` { `}</span>
+                <span>Component</span>
+                <span>{` } `}</span>
+                <span>from</span>
                 &nbsp;
-                <sapn>'</sapn>
-                <sapn>react</sapn>
-                <sapn>'</sapn>
-                <sapn>;</sapn>
+                <span>'</span>
+                <span>react</span>
+                <span>'</span>
+                <span>;</span>
                 <br />
                 <span>import</span>
-                <sapn>{` { `}</sapn>
-                <sapn>Button</sapn>
-                <sapn>{` } `}</sapn>
-                <sapn>from</sapn>
+                <span>{` { `}</span>
+                <span>Button</span>
+                <span>{` } `}</span>
+                <span>from</span>
                 &nbsp;
-                <sapn>'</sapn>
-                <sapn>JUI</sapn>
-                <sapn>'</sapn>
-                <sapn>;</sapn>
+                <span>'</span>
+                <span>JUI</span>
+                <span>'</span>
+                <span>;</span>
                 <br/><br/>
-                <sapn>export</sapn>
+                <span>export</span>
                 &nbsp;
-                <sapn>default</sapn>
+                <span>default</span>
                 &nbsp;
-                <sapn>class</sapn>
+                <span>class</span>
                 &nbsp;
-                <sapn>ButtonContent</sapn>
+                <span>ButtonContent</span>
                 &nbsp;
-                <sapn>extends</sapn>
+                <span>extends</span>
                 &nbsp;
-                <sapn>Component</sapn>
+                <span>Component</span>
                 <br/>
-                <sapn>{`{`}</sapn>
+                <span>{`{`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>handleClick</span>
                 &nbsp;&nbsp;
                 <span>{`=`}</span>
                 &nbsp;&nbsp;
-                <sapn>{`()`}</sapn>
+                <span>{`()`}</span>
                 &nbsp;&nbsp;
-                <sapn>{`=>`}</sapn>
+                <span>{`=>`}</span>
                 &nbsp;&nbsp;
-                <sapn>{`{`}</sapn>
+                <span>{`{`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>{`console.log`}</span>
                 <span>{`(`}</span>
-                <sapn>'</sapn>
-                <sapn>点击按钮</sapn>
-                <sapn>'</sapn>
+                <span>'</span>
+                <span>点击按钮</span>
+                <span>'</span>
                 <span>{`)`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <sapn>{`}`}</sapn>
+                <span>{`}`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>render</span>
-                <sapn>{`()`}</sapn>
-                <sapn>{`{`}</sapn>
+                <span>{`()`}</span>
+                <span>{`{`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>return</span>
@@ -94,13 +94,13 @@ export default class CodeBtnNormal extends Component{
                 &nbsp;&nbsp;
                 <span>type</span>
                 <span>{`=`}</span>
-                <sapn>'</sapn>
-                <sapn>Primary</sapn>
-                <sapn>'</sapn>
+                <span>'</span>
+                <span>Primary</span>
+                <span>'</span>
                 &nbsp;&nbsp;
                 <span>handleClick</span>
                 <span>{`=`}</span>
-                <sapn>{`{`}</sapn>
+                <span>{`{`}</span>
                 <span>this.handleClick</span>
                 <span>{`}`}</span>
                 &nbsp;
@@ -114,9 +114,9 @@ export default class CodeBtnNormal extends Component{
                 &nbsp;&nbsp;
                 <span>type</span>
                 <span>{`=`}</span>
-                <sapn>'</sapn>
-                <sapn>Default</sapn>
-                <sapn>'</sapn>
+                <span>'</span>
+                <span>Default</span>
+                <span>'</span>
                 <span>{`/`}</span>
                 <span>{`>`}</span>
                 <br/>
@@ -127,9 +127,9 @@ export default class CodeBtnNormal extends Component{
                 &nbsp;&nbsp;
                 <span>type</span>
                 <span>{`=`}</span>
-                <sapn>'</sapn>
-                <sapn>Danger</sapn>
-                <sapn>'</sapn>
+                <span>'</span>
+                <span>Danger</span>
+                <span>'</span>
                 <span>{`/`}</span>
                 <span>{`>`}</span>
                 <br/>
@@ -143,9 +143,9 @@ export default class CodeBtnNormal extends Component{
                 <span>{`)`}</span>
                 <br/>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <sapn>{`}`}</sapn>
+                <span>{`}`}</span>
                 <br/>
-                <sapn>{`}`}</sapn>
+                <span>{`}`}</span>
             </div>
         )
     }

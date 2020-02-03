@@ -45,7 +45,7 @@ export default class Coding extends Component{
                                 if(item.type === this.props.type){
                                     Code = item.codeContent
                                 }
-                                return Code;
+                                return <span key={item.type}>{ Code }</span>;
                             })
                         }
                     </div>
