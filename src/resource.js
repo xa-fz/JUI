@@ -4,7 +4,6 @@
 const RESOURCE = {
     SHOW_CODE: '显示代码',
     HIDDEN_CODE: '隐藏代码',
-    BTN_TITLE_ARR: ['基础用法：根据功能的区别选择使用按钮的类型', '图标：根据功能选择选择相应带有icon的按钮'],
     BTN_INFO_ARR: [
         {
             type: 'btn-normal',
@@ -13,6 +12,10 @@ const RESOURCE = {
         {
             type: 'btn-icon',
             title: '图标：根据功能选择选择相应带有icon的按钮'
+        },
+        {
+            type: 'btn-disable',
+            title: '按钮的不可点击状态'
         }
     ]
 }

@@ -1,5 +1,6 @@
 import React,{ Component } from 'react';
-import ButtonContent from './ButtonContent/index';
+import ButtonContent from './ButtonContent';
+import IconContent from './IconContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -17,11 +18,16 @@ class ComponentTree extends Component{
                             id: '00-01',
                             compName: 'Button 按钮',
                             component: <ButtonContent/>
+                        },
+                        {
+                            id: '00-02',
+                            compName: 'Icon图标',
+                            component: <IconContent />
                         }
                     ]
                 },{
                     id: '01',
-                    compType: '高级组件',
+                    compType: '提示信息',
                     listStatus: false,
                     childern: [
                         

@@ -23,7 +23,7 @@ export default class ButtonContent extends Component{
                 <div className='btnTypeNormal'>
                     <Button type='Primary' handleClick={this.handleClick}/>
                     &nbsp;&nbsp;
-                    <Button type='Default'/>
+                    <Button type='Default' />
                     &nbsp;&nbsp;
                     <Button type='Danger'/>
                 </div>
@@ -31,7 +31,15 @@ export default class ButtonContent extends Component{
                 case 'btn-icon':
                 item.showComponent = 
                 <div className='btnIcon'>
-                    123
+                    得先用svg画图
+                </div>
+                break;
+                case 'btn-disable':
+                item.showComponent = 
+                <div className='btnDisabled'>
+                    <Button type='Primary' disabled={true}/>
+                    &nbsp;&nbsp;
+                    <Button text={'自定义文字'} disabled={true}/>
                 </div>
                 break;
                 default:

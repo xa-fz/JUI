@@ -34,11 +34,15 @@ export default class Button extends Component{
     }
 
     render(){
-        const { type, size, text } = this.props;
+        const { type, size, text, disabled } = this.props;
+        let disable = false;
+        if(disabled !== undefined){
+            disable = disabled
+        }
         let btnObj = {};
         btnText.forEach(item => {
+            btnObj.textName = text ? text : item.text;
             if (item.title === type) {
-                btnObj.textName = text ? text : item.text;
                 btnObj.btnStyle = item.styleName;
                 btnObj.size = size;
             }
@@ -46,10 +50,18 @@ export default class Button extends Component{
 
         return (
             <button
-                style={{ width: size && size.width, height: size && size.height }}
+                style={{ 
+                    width: size && size.width,
+                    height: size && size.height,
+                    cursor: disable && 'not-allowed',
+                    backgroundColor: disable && '#f5f5f5',
+                    color: disable && 'rgba(0, 0, 0, 0.25)',
+                    border:  disable && '1px solid #d9d9d9'
+                }}
                 type={ type } 
                 className={'jui-btn ' + btnObj.btnStyle}
                 onClick={  this.clkBtn }
+                disabled={ disable }
             >
                 { btnObj.textName }
             </button>
