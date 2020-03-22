@@ -16,7 +16,7 @@ export default class ButtonContent extends Component{
     }
     
     render(){
-        RESOURCE.BTN_INFO_ARR.forEach((item) => {
+        RESOURCE.BTN_INFO_ARR.forEach(item => {
             switch(item.type){
                 case 'btn-normal':
                 item.showComponent = 
@@ -48,7 +48,7 @@ export default class ButtonContent extends Component{
 
         })
         return (
-            <div className='buttonContent'>
+            <div className='contentCommonStyle buttonContent'>
                 <div className='header'>
                     <div className='text'>Button 按钮</div>
                 </div>

@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import ButtonContent from './ButtonContent';
 import IconContent from './IconContent';
+import ModalContent from './ModalContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -17,7 +18,7 @@ class ComponentTree extends Component{
                         {
                             id: '00-01',
                             compName: 'Button 按钮',
-                            component: <ButtonContent/>
+                            component: <ButtonContent />
                         },
                         {
                             id: '00-02',
@@ -30,7 +31,11 @@ class ComponentTree extends Component{
                     compType: '提示信息',
                     listStatus: false,
                     childern: [
-                        
+                        {
+                            id: '01-01',
+                            compName: 'Modal  对话框',
+                            component:<ModalContent />
+                        }
                     ]
                 }
             ]
@@ -43,7 +48,7 @@ class ComponentTree extends Component{
     showList = comInfo => {
         let { componentList } = this.state;
         let arr = [...componentList];
-        arr.forEach((item) => {
+        arr.forEach(item => {
             if(comInfo.id === item.id){
                 item.listState = !item.listState;
             }
