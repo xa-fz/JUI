@@ -39,7 +39,7 @@ export default class ButtonContent extends Component{
                 <div className='btnDisabled'>
                     <Button type='Primary' disabled={true}/>
                     &nbsp;&nbsp;
-                    <Button text={'自定义文字'} disabled={true}/>
+                    <Button text={RESOURCE.CUSTOM_WORD} disabled={true}/>
                 </div>
                 break;
                 default:
@@ -54,8 +54,8 @@ export default class ButtonContent extends Component{
                 </div>
                 <div className='useComponent'>
                     {
-                        RESOURCE.BTN_INFO_ARR.map((item) => 
-                        <div className='btnUsing' key={item.type}>
+                        RESOURCE.BTN_INFO_ARR.map(item => 
+                        <div className='instructions' key={item.type}>
                             <div className='title'>{item.title}</div>
                             <div className='content'>
                                 {item.showComponent}

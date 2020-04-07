@@ -11,7 +11,7 @@ export default class IconContent extends Component{
     
     render(){
         return (
-            <div className='iconContent'>
+            <div className='contentCommonStyle iconContent'>
                 <div className='header'>
                     <div className='text'>Icon 图标</div>
                 </div>

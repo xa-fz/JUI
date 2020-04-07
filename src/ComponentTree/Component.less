@@ -1,8 +1,11 @@
+@J_Border: 1px solid #d9d9d9;
+
+
 /**
  * 左侧树
  */
 .componentTree{
-    border-top: 1px solid #d9d9d9;
+    border-top: @J_Border;
     .Tree_type{
         font-size: 16px;
         padding: 10px 20px;
@@ -26,6 +29,9 @@
         }
     }
 }
+/*
+* 页面内容公共部分
+*/
 .contentCommonStyle{
     .header{
         height: 40px;
@@ -37,6 +43,16 @@
         height: 660px;
         overflow: auto;
         padding: 0px 20px;
+        .instructions{
+            margin-top: 20px;
+            .title{
+                margin: 10px 20px
+            }
+            .content{
+                border: @J_Border;
+                border-radius: 8px;
+            }
+        }
     }
     .useComponent::-webkit-scrollbar{
         display: none;
@@ -46,42 +62,29 @@
 * Button部分
 */
 .buttonContent{
-        .btnUsing{
-            margin-top: 20px;
-            .title{
-                margin: 10px 0px;
-            }
-            .content{
-                border: 1px solid #d9d9d9;
-                border-radius: 8px;
-                .btnTypeNormal{
-                    padding: 20px;
-                    border-bottom: 1px solid #d9d9d9;
-                }
-                .btnDisabled{
-                    padding: 20px;
-                    border-bottom: 1px solid #d9d9d9;
-                }
-            }
-        }
+    .btnTypeNormal{
+        padding: 20px;
+        border-bottom: @J_Border;
+    }
+    .btnDisabled{
+        padding: 20px;
+        border-bottom: @J_Border;
+    }
 }
 /*
 *Icon 部分
 */
 .iconContent{
-    .header{
-        height: 40px;
-        .text{
-            font-size: 25px;
-        }
-        .textSvg{
-            margin-top: 10px;
-        }
+    .textSvg{
+        margin-top: 10px;
     }
 }
 /*
 *Modal 部分
 */
 .modalContent{
-    
+    .modalTypeNormal{
+        padding: 20px;
+        border-bottom: @J_Border;
+    }
 }
