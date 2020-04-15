@@ -5,8 +5,14 @@ export default class Modal extends Component{
     constructor(props){
         super(props);
         this.state={
-
-        }
+            translateX: 0, // 动画X轴移动长度
+            translateY: 0  // 动画y轴移动长度
+        };
+        this.moving = false;
+        this.lastX = null; // 移动后的x轴位置
+        this.lastY = null; // 移动后的y轴位置
+        window.onmouseup = e => this.onMouseUp(e);
+        window.onmousemove = e => this.onMouseMove(e);
     }
     /** 
      * @method 用于赋值给对话框的margin使垂直居中
@@ -14,13 +20,43 @@ export default class Modal extends Component{
     judgeType = attr =>{
         let attrVal;
         if(typeof attr === 'number'){
-            attrVal = -attr/2
+            attrVal = -attr/2;
         }else if(typeof attr === 'string'){
             attrVal = -parseInt(attr.split('px').join())/2;
         }
         return attrVal
     }
-
+    /** 
+     * @method 监听鼠标按下的事件
+    */
+    onMouseDown(e) {
+        e.stopPropagation();
+        this.moving = true;
+    }
+    /** 
+     * @method 监听鼠标的事件
+     * 第一次移动，现在一次鼠标的位置减去上一次的位置就是需要移动的位置
+    */
+    onMouseMove(e) {
+        const { translateX, translateY } = this.state;
+        if(this.moving){
+            if(this.lastX && this.lastY) {
+                let dx = e.clientX - this.lastX;
+                let dy = e.clientY - this.lastY;
+                this.setState({ translateX: translateX + dx, translateY: translateY + dy })
+            }
+            this.lastX = e.clientX;
+            this.lastY = e.clientY;
+        }
+    }
+    /** 
+     * @method 鼠标弹起初始化状态
+    */
+    onMouseUp() {
+        this.moving = false;
+        this.lastX = null;
+        this.lastY = null;
+    }
 
     render(){
         const { visible, bodyStyle } = this.props;
@@ -46,12 +82,14 @@ export default class Modal extends Component{
 
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
-                <div className='dialog' 
+                <div className='dialog'
+                    onMouseDown={e => this.onMouseDown(e)}
                     style={{
                         width: modalWidth,
                         height: modalHeight,
                         marginTop: margintop,
-                        marginLeft: marginleft
+                        marginLeft: marginleft,
+                        transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`
                     }}
                 >
                     <p>123123</p>
