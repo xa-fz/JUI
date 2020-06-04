@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 // Provider是react-redux两个核心工具之一，作用：将store传递到每个项目中的组件中
 import { Provider } from 'react-redux';
 import store from './store';
