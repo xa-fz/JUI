@@ -9,8 +9,8 @@ export default class Modal extends Component{
             translateY: 0  // 动画y轴移动长度
         };
         this.moving = false;
-        this.lastX = null; // 移动后的x轴位置
-        this.lastY = null; // 移动后的y轴位置
+        this.lastX = null; // 上一次x轴的位置
+        this.lastY = null; // 上一次y轴的位置
         window.onmouseup = e => this.onMouseUp(e);
         window.onmousemove = e => this.onMouseMove(e);
     }
@@ -92,7 +92,7 @@ export default class Modal extends Component{
                         transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`
                     }}
                 >
-                    <p>123123</p>
+                    <p>提示操作弹窗</p>
                 </div>
             </div>
         )
