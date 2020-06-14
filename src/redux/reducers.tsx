@@ -7,10 +7,10 @@ const INITALL={
     xArr:[1,2,3]
 }
 
-function initData(state = INITALL, { type, payload }){
-    switch(type){
+function initData(state = INITALL, a: any){
+    switch(a.type){
         case INIT_DATA:
-        return payload.data
+        return a.payload.data
         default:
         return state.xArr
     }
