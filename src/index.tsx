@@ -6,10 +6,13 @@ import store from './store';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { ComponentsProvider } from './context';
 
 ReactDOM.render(
         <Provider store={store}>
-            <App/>
+            <ComponentsProvider>
+                <App/>
+            </ComponentsProvider>
         </Provider>
     , 
 document.getElementById('root'));

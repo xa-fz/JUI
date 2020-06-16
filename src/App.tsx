@@ -1,10 +1,13 @@
-import React,{ Component } from 'react';
-import {useState, ReactElement} from 'react';
+import React,{ Component, useState, ReactElement, useContext } from 'react';
 import './App.less';
-import ComponentTree from './ComponentTree/ComponentTree';
+import ComponentTrees from './ComponentTree/ComponentTree';
+import { ComponentsContext } from './context'
 
 const App: React.FC = (): ReactElement<any, string | (new (props: any) => Component<any, any, any>)> | null =>{
-  const [showComponent, setComponent]: [any, React.Dispatch<React.SetStateAction<any>>] = useState(null); 
+  const [showComponent, setComponent]: [any, React.Dispatch<React.SetStateAction<any>>] = useState(null);
+  const child_component = useContext(ComponentsContext)[0];
+
+
   const getComponent = (showComponent: any) => {
     setComponent(showComponent);
   }
@@ -12,10 +15,10 @@ const App: React.FC = (): ReactElement<any, string | (new (props: any)
       <div className="App">
         <div className='componentList'>
           <div className='header'>JUI</div>
-          <ComponentTree compConent = {getComponent}/>
+          <ComponentTrees />
         </div>
         <div className='codeContent'>
-          { showComponent }
+          { child_component }
         </div>
       </div>
     )
