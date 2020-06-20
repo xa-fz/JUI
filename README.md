@@ -1,5 +1,5 @@
 ## JUI
-A front-end component library based on reactJs
+A front-end component library based on reactJs & typescript
 
 ## Available Scripts
 
