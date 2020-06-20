@@ -1,6 +1,6 @@
 import React,{ Component, ReactElement, useContext } from 'react';
 import './App.less';
-import ComponentsTree from './ComponentTree/ComponentsTree';
+import ComponentTree from './ComponentTree/ComponentTree';
 import { ComponentsContext } from './context'
 
 const App: React.FC = (): ReactElement<any, string | (new (props: any) => Component<any, any, any>)> | null =>{
@@ -10,7 +10,7 @@ const App: React.FC = (): ReactElement<any, string | (new (props: any)
       <div className="App">
         <div className='componentList'>
           <div className='header'>JUI</div>
-          <ComponentsTree />
+          <ComponentTree />
         </div>
         <div className='codeContent'>
           { child_component }
