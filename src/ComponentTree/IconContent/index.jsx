@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Icon from '../../Components/Icon';
+import RESOURCE from '../../resource';
 
 export default class IconContent extends Component{
     constructor(props){
@@ -13,12 +14,21 @@ export default class IconContent extends Component{
         return (
             <div className='contentCommonStyle iconContent'>
                 <div className='header'>
-                    <div className='text'>Icon 图标</div>
+                    <h1>Icon 图标</h1>
                 </div>
                 <div className='iconList'>
                     <div className='basicIcon'>
-                        <div className='title'>基础图标</div>
-                        <Icon type=''/>
+                        <h3 className='title'>基础图标</h3>
+                        <ul>
+                            {
+                                RESOURCE.ICONS_NAME_ARR.map(item => 
+                                    <li>
+                                        <Icon type={item.type}/>
+                                        <span>{item.name}</span>
+                                    </li>
+                                )
+                            }
+                        </ul>
                     </div>
                 </div>
             </div>

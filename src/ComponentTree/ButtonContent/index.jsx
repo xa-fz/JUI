@@ -50,7 +50,7 @@ export default class ButtonContent extends Component{
         return (
             <div className='contentCommonStyle buttonContent'>
                 <div className='header'>
-                    <div className='text'>Button 按钮</div>
+                    <h1>Button 按钮</h1>
                 </div>
                 <div className='useComponent'>
                     {

@@ -24,6 +24,16 @@ const RESOURCE = {
             type: 'modal-normal',
             title: '基本用法：询问用户操作'
         }
+    ],
+    ICONS_NAME_ARR: [
+        {
+            name: 'Arrow down',
+            type: 'arrowDown'
+        },
+        {
+            name: 'Arrow up',
+            type: 'arrowUp'
+        }
     ]
 }
 

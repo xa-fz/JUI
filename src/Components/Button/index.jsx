@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './button.less'
 
 const btnText = [
@@ -19,22 +19,15 @@ const btnText = [
     },
 ];
 
-export default class Button extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-
+const Button = (props) => {
+        /**
+         *@method 点击按钮的回调函数
+        */
+        const clkBtn = (e) => {
+            props.handleClick && props.handleClick(e);
         }
-    }
-/**
- *@method 点击按钮的回调函数
- */
-    clkBtn = (e) => {
-        this.props.handleClick && this.props.handleClick(e);
-    }
 
-    render(){
-        const { type, size, text, disabled } = this.props;
+        const { type, size, text, disabled } = props;
         let disable = false;
         if(disabled !== undefined){
             disable = disabled
@@ -60,11 +53,12 @@ export default class Button extends Component{
                 }}
                 type={ type } 
                 className={'jui-btn ' + btnObj.btnStyle}
-                onClick={  this.clkBtn }
+                onClick={  clkBtn }
                 disabled={ disable }
             >
                 { btnObj.textName }
             </button>
         )
-    }
 }
+
+export default Button
