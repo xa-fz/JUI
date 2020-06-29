@@ -22,8 +22,8 @@ export default class IconContent extends Component{
                         <ul>
                             {
                                 RESOURCE.ICONS_NAME_ARR.map(item => 
-                                    <li>
-                                        <Icon type={item.type}/>
+                                    <li key={item.type}>
+                                        <Icon type={item.type} style={{color: '#1890FF'}} size='large'/>
                                         <span>{item.name}</span>
                                     </li>
                                 )

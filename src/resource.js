@@ -33,6 +33,10 @@ const RESOURCE = {
         {
             name: 'Arrow up',
             type: 'arrowUp'
+        },
+        {
+            name: 'Arrow left',
+            type: 'arrowLeft'
         }
     ]
 }
