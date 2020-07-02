@@ -37,6 +37,10 @@ const RESOURCE = {
         {
             name: 'Arrow left',
             type: 'arrowLeft'
+        },
+        {
+            name: 'Close',
+            type: 'close'
         }
     ]
 }

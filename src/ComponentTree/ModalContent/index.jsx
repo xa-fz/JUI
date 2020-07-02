@@ -18,6 +18,12 @@ export default class ModalContent extends Component{
         })
     }
 
+    cancelModal = () => {
+        this.setState({
+            isOpen: false
+        })
+    }
+
     render(){
         const { isOpen } = this.state;
         RESOURCE.MODAL_INFO_ARR.forEach(item => {
@@ -26,12 +32,14 @@ export default class ModalContent extends Component{
                 item.showComponent = 
                 <div className='modalTypeNormal'>
                     <Button type='Primary' text='Open Modal' handleClick={this.handleClick}/>
-                    <Modal 
+                    <Modal
+                       hasClose={true}
                        visible={isOpen}
                        bodyStyle={{
                            width:'520px',
                            height:'260px'
                        }}
+                       cancel={this.cancelModal}
                     >
                         <div>
                             ttttttttttttttttttt

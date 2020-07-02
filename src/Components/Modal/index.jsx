@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Icon from '../Icon';
 import './modal.less';
 
 export default class Modal extends Component{
@@ -17,7 +18,7 @@ export default class Modal extends Component{
     /** 
      * @method 用于赋值给对话框的margin使垂直居中
     */
-    judgeType = attr =>{
+    judgeType = attr => {
         let attrVal;
         if(typeof attr === 'number'){
             attrVal = -attr/2;
@@ -29,7 +30,7 @@ export default class Modal extends Component{
     /** 
      * @method 监听鼠标按下的事件
     */
-    onMouseDown(e) {
+    onMouseDown = e => {
         e.stopPropagation();
         this.moving = true;
     }
@@ -37,7 +38,7 @@ export default class Modal extends Component{
      * @method 监听鼠标的事件
      * 第一次移动，现在一次鼠标的位置减去上一次的位置就是需要移动的位置
     */
-    onMouseMove(e) {
+    onMouseMove = e => {
         const { translateX, translateY } = this.state;
         if(this.moving){
             if(this.lastX && this.lastY) {
@@ -52,18 +53,15 @@ export default class Modal extends Component{
     /** 
      * @method 鼠标弹起初始化状态
     */
-    onMouseUp() {
+    onMouseUp = () => {
         this.moving = false;
         this.lastX = null;
         this.lastY = null;
     }
 
     render(){
-        const { visible, bodyStyle } = this.props;
-        let margintop;
-        let marginleft;
-        let modalHeight;
-        let modalWidth;
+        const { visible, bodyStyle, hasClose } = this.props;
+        let margintop, marginleft, modalHeight, modalWidth;
         if(bodyStyle && bodyStyle.height){
             modalHeight = bodyStyle.height;
             margintop = this.judgeType(bodyStyle.height);
@@ -79,9 +77,10 @@ export default class Modal extends Component{
             modalWidth = '520px';
             marginleft = '-260px';
         }
-
+        let showClose = hasClose ? hasClose : true;
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
+                
                 <div className='dialog'
                     onMouseDown={e => this.onMouseDown(e)}
                     style={{
@@ -92,7 +91,13 @@ export default class Modal extends Component{
                         transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`
                     }}
                 >
-                    <p>123123</p>
+                    {
+                        showClose &&  
+                        <div style={{float: 'right'}} onClick={() => this.props.cancel()}>
+                            <Icon type='close' style={{float: 'right'}}/>
+                        </div>
+                    }
+                    <div style={{ clear:'both' }}>123123</div>
                 </div>
             </div>
         )

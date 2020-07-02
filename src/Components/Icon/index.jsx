@@ -1,28 +1,49 @@
 import React from 'react';
 import PathInfo from './svg';
 
- const Icon = (props) =>{
+ const Icon = (props) => {
     
     const { type, size, style } = props;
     let svgSize = {
         width: '3em',
         height: '2em'
     };
-    svgSize.width = style.width ? style.width : (size === 'large' ? '6em' : (size === 'middle' ? '5em' : (size === 'small' && '3em')));
-    svgSize.height = style.height ? style.height : (size === 'large' ? '4em' : (size === 'middle' ? '3em' : (size === 'small' && '2em')));
+    if(size) {
+        if(style && style.width) {
+            svgSize.width = style.width;
+        } else if(style && style.height) {
+            svgSize.height = style.height;
+        } else {
+            switch(size){
+                case 'large':
+                    svgSize.width = '6em';
+                    svgSize.height = '4em'
+                    break;
+                case 'middle':
+                    svgSize.width = '5em';
+                    svgSize.height = '3em';
+                    break;
+                case 'small':
+                    svgSize.width = '3em';
+                    svgSize.height = '2em';
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
     return (
-        <div>
-            <svg className="jui-icon"
-                style={{width: svgSize.width, height: svgSize.height, verticalAlign: 'middle', fill: 'currentColor', overflow: 'hidden'}}
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"  
-            >
-                <path d={`${PathInfo[type].track}`}
-                    fill={style && style.color ? style.color : "#181818"}>
-                </path>
-            </svg>
-        </div>
+        <svg className="jui-icon"
+            style={{width: svgSize.width, height: svgSize.height, verticalAlign: 'middle', fill: 'currentColor', overflow: 'hidden'}}
+            viewBox="0 0 1024 1024"
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"  
+        >
+            <path d={`${PathInfo[type].track}`}
+                fill={style && style.color ? style.color : "#181818"}>
+            </path>
+        </svg>
     )
 }
 export default Icon
