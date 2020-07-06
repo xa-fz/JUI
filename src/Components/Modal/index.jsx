@@ -80,7 +80,6 @@ export default class Modal extends Component{
         let showClose = hasClose ? hasClose : true;
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
-                
                 <div className='dialog'
                     onMouseDown={e => this.onMouseDown(e)}
                     style={{
@@ -91,13 +90,21 @@ export default class Modal extends Component{
                         transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`
                     }}
                 >
-                    {
-                        showClose &&  
-                        <div style={{float: 'right'}} onClick={() => this.props.cancel()}>
-                            <Icon type='close' style={{float: 'right'}}/>
-                        </div>
-                    }
-                    <div style={{ clear:'both' }}>123123</div>
+                    <div className='dialog-header'>
+                        <span className='dialog-title'>title</span>
+                        {
+                            showClose &&  
+                            <div style={{float: 'right'}} onClick={() => this.props.cancel()}>
+                                <Icon type='close' style={{float: 'right'}}/>
+                            </div>
+                        }
+                    </div>
+                    <div className='dialog-body'>
+                        23
+                    </div>
+                    <div className='dialog-footer'>
+
+                    </div>
                 </div>
             </div>
         )
