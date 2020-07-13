@@ -27,20 +27,23 @@ const Button = (props) => {
             props.handleClick && props.handleClick(e);
         }
 
-        const { type, size, text, disabled } = props;
+        const { type, size, text, disabled, icons } = props;
         let disable = false;
         if(disabled !== undefined){
             disable = disabled
         }
         let btnObj = {};
+        btnObj.textName = text ? text : '';
         btnText.forEach(item => {
-            btnObj.textName = text ? text : item.text;
+            if(item.title === type) {
+                btnObj.textName = text ? text : item.text
+            }
             if (item.title === type) {
                 btnObj.btnStyle = item.styleName;
                 btnObj.size = size;
+                btnObj.textName = item.text
             }
         });
-
         return (
             <button
                 style={{ 
@@ -57,6 +60,7 @@ const Button = (props) => {
                 disabled={ disable }
             >
                 { btnObj.textName }
+                {icons}
             </button>
         )
 }

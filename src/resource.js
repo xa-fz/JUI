@@ -27,12 +27,12 @@ const RESOURCE = {
     ],
     ICONS_NAME_ARR: [
         {
-            name: 'Arrow down',
-            type: 'arrowDown'
-        },
-        {
             name: 'Arrow up',
             type: 'arrowUp'
+        },
+        {
+            name: 'Arrow down',
+            type: 'arrowDown'
         },
         {
             name: 'Arrow left',
@@ -41,6 +41,10 @@ const RESOURCE = {
         {
             name: 'Close',
             type: 'close'
+        },
+        {
+            name: 'User',
+            type: 'user'
         }
     ]
 }

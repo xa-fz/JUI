@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import Button from '../../Components/Button';
 import RESOURCE from '../../resource';
 import Code from '../Coding';
+import Icon from '../../Components/Icon';
 
 export default class ButtonContent extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            resourceArr: []
         }
     }
 
-    handleClick = () => {
-        console.log('点击按钮');
-    }
-    
-    render(){
-        RESOURCE.BTN_INFO_ARR.forEach(item => {
+    componentDidMount() {
+        let arr = [...RESOURCE.BTN_INFO_ARR];
+        arr.forEach(item => {
             switch(item.type){
                 case 'btn-normal':
                 item.showComponent = 
@@ -31,7 +29,7 @@ export default class ButtonContent extends Component{
                 case 'btn-icon':
                 item.showComponent = 
                 <div className='btnIcon'>
-                    得先用svg画图
+                    <Button type='Primary' icons={<Icon type='user' style={{color: '#fff'}}/>}></Button>
                 </div>
                 break;
                 case 'btn-disable':
@@ -45,8 +43,18 @@ export default class ButtonContent extends Component{
                 default:
                 break;
             }
-
         })
+        console.log(RESOURCE);
+        this.setState({
+            resourceArr: arr
+        })
+    }
+
+    handleClick = () => {
+        console.log('点击按钮');
+    }
+    
+    render(){
         return (
             <div className='contentCommonStyle buttonContent'>
                 <div className='header'>
@@ -54,7 +62,7 @@ export default class ButtonContent extends Component{
                 </div>
                 <div className='useComponent'>
                     {
-                        RESOURCE.BTN_INFO_ARR.map(item => 
+                        this.state.resourceArr.map(item => 
                         <div className='instructions' key={item.type}>
                             <div className='title'>{item.title}</div>
                             <div className='content'>
