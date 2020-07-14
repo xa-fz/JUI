@@ -9,6 +9,7 @@ class ComponentTree extends Component{
     constructor(props){
         super(props);
         this.state = {
+            chooseId: '',
             componentList : [
                 {
                     id: '00',
@@ -63,6 +64,10 @@ class ComponentTree extends Component{
      */
     showContent = child => {
         this.props.compConent(child.component);
+        console.log(child);
+        this.setState({
+            chooseId: child.id
+        })
     }
 
     render(){
@@ -82,7 +87,7 @@ class ComponentTree extends Component{
                                 <div className='Tree_list'>
                                     {
                                         item.childern.map((child) => 
-                                            <div className='listComponent' key={child.id} onClick={() => this.showContent(child)}>
+                                            <div className={`listComponent ${child.id === this.state.chooseId && 'listChoosed'}`}  key={child.id} onClick={() => this.showContent(child)}>
                                                 {child.compName}
                                             </div>
                                         )

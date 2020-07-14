@@ -33,11 +33,7 @@ const Button = (props) => {
             disable = disabled
         }
         let btnObj = {};
-        btnObj.textName = text ? text : '';
         btnText.forEach(item => {
-            if(item.title === type) {
-                btnObj.textName = text ? text : item.text
-            }
             if (item.title === type) {
                 btnObj.btnStyle = item.styleName;
                 btnObj.size = size;
@@ -59,8 +55,8 @@ const Button = (props) => {
                 onClick={  clkBtn }
                 disabled={ disable }
             >
-                { btnObj.textName }
                 {icons}
+                { text ? text : btnObj.textName }
             </button>
         )
 }

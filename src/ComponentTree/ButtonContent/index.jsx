@@ -13,12 +13,12 @@ export default class ButtonContent extends Component{
     }
 
     componentDidMount() {
-        let arr = [...RESOURCE.BTN_INFO_ARR];
-        arr.forEach(item => {
+        let resourceArr = [...RESOURCE.BTN_INFO_ARR];
+        resourceArr.forEach(item => {
             switch(item.type){
                 case 'btn-normal':
                 item.showComponent = 
-                <div className='btnTypeNormal'>
+                <div className='btnBoder btnTypeNormal'>
                     <Button type='Primary' handleClick={this.handleClick}/>
                     &nbsp;&nbsp;
                     <Button type='Default' />
@@ -28,13 +28,15 @@ export default class ButtonContent extends Component{
                 break;
                 case 'btn-icon':
                 item.showComponent = 
-                <div className='btnIcon'>
-                    <Button type='Primary' icons={<Icon type='user' style={{color: '#fff'}}/>}></Button>
+                <div className='btnBoder btnIcon'>
+                    <Button type='Primary' text='我的' icons={<Icon type='user' style={{color: '#fff', width: '20px', height: '20px'}}/>}>
+
+                    </Button>
                 </div>
                 break;
                 case 'btn-disable':
                 item.showComponent = 
-                <div className='btnDisabled'>
+                <div className='btnBoder btnDisabled'>
                     <Button type='Primary' disabled={true}/>
                     &nbsp;&nbsp;
                     <Button text={RESOURCE.CUSTOM_WORD} disabled={true}/>
@@ -44,9 +46,8 @@ export default class ButtonContent extends Component{
                 break;
             }
         })
-        console.log(RESOURCE);
         this.setState({
-            resourceArr: arr
+            resourceArr
         })
     }
 
