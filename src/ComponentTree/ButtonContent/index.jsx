@@ -19,26 +19,21 @@ export default class ButtonContent extends Component{
                 case 'btn-normal':
                 item.showComponent = 
                 <div className='btnBoder btnTypeNormal'>
-                    <Button type='Primary' handleClick={this.handleClick}/>
-                    &nbsp;&nbsp;
-                    <Button type='Default' />
-                    &nbsp;&nbsp;
+                    <Button type='Primary' handleClick={this.handleClick} buttonStyle={{marginRight: '20px'}}/>
+                    <Button type='Default' buttonStyle={{marginRight: '20px'}}/>
                     <Button type='Danger'/>
                 </div>
                 break;
                 case 'btn-icon':
                 item.showComponent = 
                 <div className='btnBoder btnIcon'>
-                    <Button type='Primary' text='我的' icons={<Icon type='user' style={{color: '#fff', width: '20px', height: '20px'}}/>}>
-
-                    </Button>
+                    <Button type='Primary' text='我的' icons={<Icon type='user' style={{color: '#fff', width: '20px', height: '20px'}}/>}/>
                 </div>
                 break;
                 case 'btn-disable':
                 item.showComponent = 
                 <div className='btnBoder btnDisabled'>
-                    <Button type='Primary' disabled={true}/>
-                    &nbsp;&nbsp;
+                    <Button type='Primary' disabled={true} buttonStyle={{marginRight: '20px'}}/>
                     <Button text={RESOURCE.CUSTOM_WORD} disabled={true}/>
                 </div>
                 break;

@@ -40,9 +40,10 @@ export default class ModalContent extends Component{
                            height:'260px'
                        }}
                        cancel={this.cancelModal}
+                       title='title'
                     >
                         <div>
-                            ttttttttttttttttttt
+                            基础弹窗
                         </div>
                     </Modal>
                 </div>

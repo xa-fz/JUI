@@ -33,7 +33,6 @@ import PathInfo from './svg';
         }
     }
 
-    console.log(svgSize, );
     return (
         <svg className="jui-icon"
             style={{width: svgSize.width, height: svgSize.height, verticalAlign: 'middle', fill: 'currentColor', overflow: 'hidden',marginRight: '5px'}}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Icon from '../Icon';
+import Button from '../Button';
 import './modal.less';
 
 export default class Modal extends Component{
@@ -60,7 +61,7 @@ export default class Modal extends Component{
     }
 
     render(){
-        const { visible, bodyStyle, hasClose } = this.props;
+        const { visible, bodyStyle, hasClose, children, title } = this.props;
         let margintop, marginleft, modalHeight, modalWidth;
         if(bodyStyle && bodyStyle.height){
             modalHeight = bodyStyle.height;
@@ -91,7 +92,7 @@ export default class Modal extends Component{
                     }}
                 >
                     <div className='dialog-header'>
-                        <span className='dialog-title'>title</span>
+                        <span className='dialog-title'>{title ? title : ''}</span>
                         {
                             showClose &&  
                             <div style={{float: 'right'}} onClick={() => this.props.cancel()}>
@@ -100,12 +101,14 @@ export default class Modal extends Component{
                         }
                     </div>
                     <div className='dialog-body'>
-                        23
+                        {children}
                     </div>
                     <div className='dialog-footer'>
-
+                        <Button type='Primary' text='确定' buttonStyle={{marginRight: '20px'}}/>
+                        <Button text='取消'/>
                     </div>
                 </div>
+                <div className='mask' onClick={() => this.props.cancel()}>mask</div>
             </div>
         )
     }
