@@ -61,14 +61,14 @@ export default class Modal extends Component{
     }
 
     render(){
-        const { visible, bodyStyle, hasClose, children, title } = this.props;
+        const { visible, bodyStyle, hasClose, children, title, mask, footer } = this.props;
         let margintop, marginleft, modalHeight, modalWidth;
         if(bodyStyle && bodyStyle.height){
             modalHeight = bodyStyle.height;
             margintop = this.judgeType(bodyStyle.height);
         }else{
             modalHeight = '270px';
-            margintop = '135px';
+            margintop = '-135px';
         }
 
         if(bodyStyle && bodyStyle.width){
@@ -79,23 +79,28 @@ export default class Modal extends Component{
             marginleft = '-260px';
         }
         let showClose = hasClose ? hasClose : true;
+        let modalStyle = {
+            transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`,
+            ...(bodyStyle ? bodyStyle : {
+                width: modalWidth,
+                height: modalHeight,
+                marginTop: margintop,
+                marginLeft: marginleft,
+            }) 
+        }
+        bodyStyle && !bodyStyle.marginLeft && Object.assign(modalStyle, {marginLeft: marginleft});
+        bodyStyle && !bodyStyle.marginTop && Object.assign(modalStyle, {marginTop: margintop});
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
                 <div className='dialog'
                     onMouseDown={e => this.onMouseDown(e)}
-                    style={{
-                        width: modalWidth,
-                        height: modalHeight,
-                        marginTop: margintop,
-                        marginLeft: marginleft,
-                        transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`
-                    }}
+                    style={modalStyle}
                 >
                     <div className='dialog-header'>
                         <span className='dialog-title'>{title ? title : ''}</span>
                         {
                             showClose &&  
-                            <div style={{float: 'right'}} onClick={() => this.props.cancel()}>
+                            <div className='fl-r' onClick={() => this.props.cancel()}>
                                 <Icon type='close' style={{float: 'right'}}/>
                             </div>
                         }
@@ -103,12 +108,17 @@ export default class Modal extends Component{
                     <div className='dialog-body'>
                         {children}
                     </div>
-                    <div className='dialog-footer'>
-                        <Button type='Primary' text='确定' buttonStyle={{marginRight: '20px'}}/>
-                        <Button text='取消'/>
-                    </div>
+                    {
+                        footer !== null &&  
+                        <div className='dialog-footer'>
+                            <Button type='Primary' text='确定' buttonStyle={{marginRight: '20px', height: '40px'}}/>
+                            <Button text='取消' buttonStyle={{height: '40px'}} handleClick={() => this.props.cancel()}/>
+                        </div>
+                    }
                 </div>
-                <div className='mask' onClick={() => this.props.cancel()}>mask</div>
+                <div className='mask' onClick={() => {
+                   return mask === true || mask === undefined ? this.props.cancel() : ''
+                }}>mask</div>
             </div>
         )
     }

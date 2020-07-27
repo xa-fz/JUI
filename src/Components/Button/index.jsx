@@ -27,7 +27,7 @@ const Button = (props) => {
             props.handleClick && props.handleClick(e);
         }
 
-        const { type, text, disabled, icons, buttonStyle } = props;
+        const { type, text, disabled, icons, buttonStyle, className } = props;
         let disable = false;
         if(disabled !== undefined){
             disable = disabled
@@ -49,7 +49,7 @@ const Button = (props) => {
         return (
             <button
                 style={basicStyle}
-                className={'jui-btn ' + btnObj.btnStyle}
+                className={'jui-btn ' + btnObj.btnStyle + ` ${className ? className : ""}`}
                 onClick={  clkBtn }
                 disabled={ disable }
             >

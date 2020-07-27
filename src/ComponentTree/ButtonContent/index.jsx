@@ -19,7 +19,7 @@ export default class ButtonContent extends Component{
                 case 'btn-normal':
                 item.showComponent = 
                 <div className='btnBoder btnTypeNormal'>
-                    <Button type='Primary' handleClick={this.handleClick} buttonStyle={{marginRight: '20px'}}/>
+                    <Button type='Primary' className="mr-20" handleClick={this.handleClick}/>
                     <Button type='Default' buttonStyle={{marginRight: '20px'}}/>
                     <Button type='Danger'/>
                 </div>

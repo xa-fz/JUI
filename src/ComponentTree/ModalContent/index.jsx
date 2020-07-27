@@ -35,15 +35,16 @@ export default class ModalContent extends Component{
                     <Modal
                        hasClose={true}
                        visible={isOpen}
-                       bodyStyle={{
-                           width:'520px',
-                           height:'260px'
-                       }}
+                    //    bodyStyle={{
+                    //        width:'520px',
+                    //        height:'260px'
+                    //    }}
                        cancel={this.cancelModal}
                        title='title'
+                       mask={false}
                     >
                         <div>
-                            基础弹窗
+                            基础弹窗内容
                         </div>
                     </Modal>
                 </div>
