@@ -7,8 +7,15 @@ export default class ModalContent extends Component{
     constructor(props){
         super(props);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            isOpenA: false
         }
+    }
+
+    handleClickA = () => {
+        this.setState({
+            isOpenA: !this.state.isOpenA
+        })
     }
 
     handleClick = () => {
@@ -18,35 +25,53 @@ export default class ModalContent extends Component{
         })
     }
 
+    
+
     cancelModal = () => {
         this.setState({
             isOpen: false
         })
     }
-
+    cancelModalA = () => {
+        this.setState({
+            isOpenA: false
+        })
+    }
     render(){
-        const { isOpen } = this.state;
+        const { isOpen, isOpenA } = this.state;
         RESOURCE.MODAL_INFO_ARR.forEach(item => {
             switch(item.type){
                 case 'modal-normal':
                 item.showComponent = 
                 <div className='modalTypeNormal'>
-                    <Button type='Primary' text='Open Modal' handleClick={this.handleClick}/>
-                    <Modal
-                       hasClose={true}
-                       visible={isOpen}
-                    //    bodyStyle={{
-                    //        width:'520px',
-                    //        height:'260px'
-                    //    }}
-                       cancel={this.cancelModal}
-                       title='title'
-                       mask={false}
-                    >
-                        <div>
-                            基础弹窗内容
-                        </div>
-                    </Modal>
+                    <div className="display mr-20">
+                        <Button type='Primary' text='Open Modal' handleClick={this.handleClick}/>
+                        <Modal
+                            hasClose={true}
+                            visible={isOpen}
+                            cancel={this.cancelModal}
+                            title='title'
+                            mask={false}
+                        >
+                            <div>
+                                基础弹窗内容
+                            </div>
+                        </Modal>
+                    </div>
+                    <div className="display v-top">
+                        <Button type='Primary' text='no footer and title' handleClick={this.handleClickA} className="text-ellipsis"/>
+                        <Modal
+                            hasClose={true}
+                            visible={isOpenA}
+                            cancel={this.cancelModalA}
+                            mask={false}
+                            footer={null}
+                        >
+                            <div>
+                                去掉页脚及title信息
+                            </div>
+                        </Modal>
+                    </div>  
                 </div>
                 break;
                 default:

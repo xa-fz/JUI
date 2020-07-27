@@ -46,6 +46,7 @@ const Button = (props) => {
             border:  disable && '1px solid #d9d9d9',
             ...buttonStyle
         }
+        console.log(className);
         return (
             <button
                 style={basicStyle}

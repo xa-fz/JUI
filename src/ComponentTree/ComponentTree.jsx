@@ -64,7 +64,6 @@ class ComponentTree extends Component{
      */
     showContent = child => {
         this.props.compConent(child.component);
-        console.log(child);
         this.setState({
             chooseId: child.id
         })
