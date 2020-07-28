@@ -109,16 +109,24 @@ export default class Modal extends Component{
                         {children}
                     </div>
                     {
-                        footer !== null &&  
-                        <div className='dialog-footer'>
-                            <Button type='Primary' text='确定' buttonStyle={{marginRight: '20px', height: '40px'}}/>
-                            <Button text='取消' buttonStyle={{height: '40px'}} handleClick={() => this.props.cancel()}/>
-                        </div>
+                        footer !== null && (footer === undefined ? 
+                            <div className='dialog-footer'>
+                                <Button className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>
+                                <Button text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={() => this.props.cancel()}/>
+                            </div> : 
+                            <div className='dialog-footer'>
+                                {
+                                    footer.map((item) => item)
+                                }
+                            </div>)
                     }
                 </div>
-                <div className='mask' onClick={() => {
-                   return mask === true || mask === undefined ? this.props.cancel() : ''
-                }}>mask</div>
+                {
+                    mask !== null && 
+                    <div className='mask' onClick={() => {
+                        return mask === true || mask === undefined ? this.props.cancel() : ''
+                     }}>mask</div>
+                }
             </div>
         )
     }

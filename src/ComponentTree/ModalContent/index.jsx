@@ -8,7 +8,9 @@ export default class ModalContent extends Component{
         super(props);
         this.state = {
             isOpen: false,
-            isOpenA: false
+            isOpenA: false,
+            isOpenB: false,
+            isOpenC: false
         }
     }
 
@@ -19,13 +21,10 @@ export default class ModalContent extends Component{
     }
 
     handleClick = () => {
-        console.log('点击按钮');
         this.setState({
             isOpen: !this.state.isOpen
         })
     }
-
-    
 
     cancelModal = () => {
         this.setState({
@@ -38,33 +37,71 @@ export default class ModalContent extends Component{
         })
     }
     render(){
-        const { isOpen, isOpenA } = this.state;
+        const { isOpen, isOpenA, isOpenB, isOpenC } = this.state;
         RESOURCE.MODAL_INFO_ARR.forEach(item => {
             switch(item.type){
                 case 'modal-normal':
                 item.showComponent = 
                 <div className='modalTypeNormal'>
                     <div className="display mr-20">
-                        <Button type='Primary' text='Open Modal' handleClick={this.handleClick}/>
+                        <Button type='Primary' text='Open Modal' handleClick={this.handleClick} buttonStyle={{width: '120px'}}/>
                         <Modal
                             hasClose={true}
                             visible={isOpen}
                             cancel={this.cancelModal}
                             title='title'
-                            mask={false}
+                            footer={[
+                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
+                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={this.cancelModal}/>
+                            ]}
                         >
                             <div>
                                 基础弹窗内容
                             </div>
                         </Modal>
                     </div>
+                    <div className="display mr-20">
+                        <Button type='Default' text='click mask' handleClick={() => this.setState({isOpenB: !this.state.isOpenB})} buttonStyle={{width: '120px'}}/>
+                        <Modal
+                            hasClose={true}
+                            visible={isOpenB}
+                            cancel={() => this.setState({isOpenB: false})}
+                            title='title'
+                            mask={false}
+                            footer={[
+                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
+                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={() => this.setState({isOpenB: false})}/>
+                            ]}
+                        >
+                            <div>
+                                不可点击遮罩层关闭
+                            </div>
+                        </Modal>
+                    </div>
+                    <div className="display mr-20">
+                        <Button type='Default' text='no mask' handleClick={() => this.setState({isOpenC: !this.state.isOpenC})} buttonStyle={{width: '120px'}}/>
+                        <Modal
+                            hasClose={true}
+                            visible={isOpenC}
+                            cancel={() => this.setState({isOpenC: false})}
+                            title='title'
+                            mask={null}
+                            footer={[
+                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
+                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={() => this.setState({isOpenC: false})}/>
+                            ]}
+                        >
+                            <div>
+                                没有遮罩层
+                            </div>
+                        </Modal>
+                    </div>
                     <div className="display v-top">
-                        <Button type='Primary' text='no footer and title' handleClick={this.handleClickA} className="text-ellipsis"/>
+                        <Button type='Default' text='no footer and title' handleClick={() => this.setState({isOpenA: !this.state.isOpenA})} className="text-ellipsis"/>
                         <Modal
                             hasClose={true}
                             visible={isOpenA}
-                            cancel={this.cancelModalA}
-                            mask={false}
+                            cancel={() => this.setState({isOpenA: false})}
                             footer={null}
                         >
                             <div>

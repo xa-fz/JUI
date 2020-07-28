@@ -19,22 +19,22 @@ export default class ButtonContent extends Component{
                 case 'btn-normal':
                 item.showComponent = 
                 <div className='btnBoder btnTypeNormal'>
-                    <Button type='Primary' className="mr-20" handleClick={this.handleClick}/>
-                    <Button type='Default' buttonStyle={{marginRight: '20px'}}/>
-                    <Button type='Danger'/>
+                    <Button type='Primary' className="mr-20" buttonStyle={{width: '120px'}} handleClick={this.handleClick}/>
+                    <Button type='Default' className='mr-20' buttonStyle={{width: '120px'}}/>
+                    <Button type='Danger' buttonStyle={{width: '120px'}}/>
                 </div>
                 break;
                 case 'btn-icon':
                 item.showComponent = 
                 <div className='btnBoder btnIcon'>
-                    <Button type='Primary' text='我的' icons={<Icon type='user' style={{color: '#fff', width: '20px', height: '20px'}}/>}/>
+                    <Button type='Primary' text='我的' buttonStyle={{width: '120px'}} icons={<Icon type='user' style={{color: '#fff', width: '20px', height: '20px'}}/>}/>
                 </div>
                 break;
                 case 'btn-disable':
                 item.showComponent = 
                 <div className='btnBoder btnDisabled'>
-                    <Button type='Primary' disabled={true} buttonStyle={{marginRight: '20px'}}/>
-                    <Button text={RESOURCE.CUSTOM_WORD} disabled={true}/>
+                    <Button className='mr-20' type='Primary' disabled={true} buttonStyle={{width: '120px'}}/>
+                    <Button text={RESOURCE.CUSTOM_WORD} buttonStyle={{width: '120px'}} disabled={true}/>
                 </div>
                 break;
                 default:
