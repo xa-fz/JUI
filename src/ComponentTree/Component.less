@@ -54,6 +54,7 @@
             .content{
                 border: @J_Border;
                 border-radius: 8px;
+                width: 600px;
             }
         }
     }
@@ -65,7 +66,7 @@
 * Button部分
 */
 .buttonContent{
-    .btnBoder{
+    .btnBorder{
         padding: 20px;
         border-bottom: @J_Border;
     }
@@ -99,8 +100,13 @@
 *Modal 部分
 */
 .modalContent{
-    .modalTypeNormal{
+    .modalBorder{
         padding: 20px;
         border-bottom: @J_Border;
+    }
+    .modalTipsInfo {
+        .jui-modal .dialog .dialog-footer {
+            border-top: 0px;
+        }
     }
 }

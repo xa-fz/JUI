@@ -23,6 +23,10 @@ const RESOURCE = {
         {
             type: 'modal-normal',
             title: '基本用法：询问用户操作'
+        },
+        {
+            type: 'modal-tips',
+            title: '提示：操作结果的提示信息'
         }
     ],
     ICONS_NAME_ARR: [
@@ -45,6 +49,22 @@ const RESOURCE = {
         {
             name: 'User',
             type: 'user'
+        },
+        {
+            name: 'Success',
+            type: 'success'
+        },
+        {
+            name: 'Error',
+            type: 'error'
+        },
+        {
+            name: 'Info',
+            type: 'info'
+        },
+        {
+            name: 'Warning',
+            type: 'warning'
         }
     ]
 }

@@ -10,7 +10,8 @@ export default class ModalContent extends Component{
             isOpen: false,
             isOpenA: false,
             isOpenB: false,
-            isOpenC: false
+            isOpenC: false,
+            isOpenD: false
         }
     }
 
@@ -37,12 +38,12 @@ export default class ModalContent extends Component{
         })
     }
     render(){
-        const { isOpen, isOpenA, isOpenB, isOpenC } = this.state;
+        const { isOpen, isOpenA, isOpenB, isOpenC, isOpenD } = this.state;
         RESOURCE.MODAL_INFO_ARR.forEach(item => {
             switch(item.type){
                 case 'modal-normal':
                 item.showComponent = 
-                <div className='modalTypeNormal'>
+                <div className='modalBorder modalTypeNormal'>
                     <div className="display mr-20">
                         <Button type='Primary' text='Open Modal' handleClick={this.handleClick} buttonStyle={{width: '120px'}}/>
                         <Modal
@@ -97,7 +98,7 @@ export default class ModalContent extends Component{
                         </Modal>
                     </div>
                     <div className="display v-top">
-                        <Button type='Default' text='no footer and title' handleClick={() => this.setState({isOpenA: !this.state.isOpenA})} className="text-ellipsis"/>
+                        <Button type='Default' text='no footer and title' handleClick={() => this.setState({isOpenA: !this.state.isOpenA})}/>
                         <Modal
                             hasClose={true}
                             visible={isOpenA}
@@ -110,6 +111,26 @@ export default class ModalContent extends Component{
                         </Modal>
                     </div>  
                 </div>
+                break;
+                case 'modal-tips':
+                    item.showComponent = 
+                    <div className='modalBorder modalTipsInfo'>
+                        <Button type='Default' handleClick={() => this.setState({isOpenD: !this.state.isOpenD})} buttonStyle={{width: '120px'}}>
+                            info
+                        </Button>
+                        <Modal
+                            hasClose={true}
+                            visible={isOpenD}
+                            cancel={() => this.setState({isOpenD: false})}
+                            footer={[
+                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>
+                            ]}
+                        >
+                            <div>
+                                信息提示
+                            </div>
+                        </Modal>
+                    </div>
                 break;
                 default:
                 break;

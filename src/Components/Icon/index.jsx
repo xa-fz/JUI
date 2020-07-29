@@ -40,9 +40,14 @@ import PathInfo from './svg';
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"  
         >
-            <path d={`${PathInfo[type].track}`}
-                fill={style && style.color ? style.color : "#181818"}>
-            </path>
+            {
+                PathInfo[type].track.map((item, index) => 
+                    <path d={item}
+                        key={item + index}
+                        fill={style && style.color ? style.color : "#181818"}>
+                    </path>
+                )
+            }
         </svg>
     )
 }

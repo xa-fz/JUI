@@ -27,7 +27,7 @@ const Button = (props) => {
             props.handleClick && props.handleClick(e);
         }
 
-        const { type, text, disabled, icons, buttonStyle, className } = props;
+        const { type, text, disabled, icons, buttonStyle, className, children } = props;
         let disable = false;
         if(disabled !== undefined){
             disable = disabled
@@ -54,7 +54,9 @@ const Button = (props) => {
                 disabled={ disable }
             >
                 {icons}
-                { text ? text : btnObj.textName }
+                {
+                    children ? children : (text ? text : btnObj.textName)
+                }
             </button>
         )
 }

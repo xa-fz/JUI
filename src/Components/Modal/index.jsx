@@ -39,8 +39,9 @@ export default class Modal extends Component{
      * @method 监听鼠标的事件
      * 第一次移动，现在一次鼠标的位置减去上一次的位置就是需要移动的位置
     */
-    onMouseMove = e => {
+    onMouseMove = e => { 
         const { translateX, translateY } = this.state;
+        console.log(translateX, translateY);
         if(this.moving){
             if(this.lastX && this.lastY) {
                 let dx = e.clientX - this.lastX;
@@ -125,7 +126,7 @@ export default class Modal extends Component{
                     mask !== null && 
                     <div className='mask' onClick={() => {
                         return mask === true || mask === undefined ? this.props.cancel() : ''
-                     }}>mask</div>
+                     }}></div>
                 }
             </div>
         )
