@@ -51,10 +51,6 @@ export default class ModalContent extends Component{
                             visible={isOpen}
                             cancel={this.cancelModal}
                             title='title'
-                            footer={[
-                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
-                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={this.cancelModal}/>
-                            ]}
                         >
                             <div>
                                 基础弹窗内容
@@ -69,10 +65,6 @@ export default class ModalContent extends Component{
                             cancel={() => this.setState({isOpenB: false})}
                             title='title'
                             mask={false}
-                            footer={[
-                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
-                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={() => this.setState({isOpenB: false})}/>
-                            ]}
                         >
                             <div>
                                 不可点击遮罩层关闭
@@ -87,10 +79,6 @@ export default class ModalContent extends Component{
                             cancel={() => this.setState({isOpenC: false})}
                             title='title'
                             mask={null}
-                            footer={[
-                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>,
-                                <Button key='cancel' text='取消' buttonStyle={{height: '40px', width: '120px'}} handleClick={() => this.setState({isOpenC: false})}/>
-                            ]}
                         >
                             <div>
                                 没有遮罩层
@@ -119,12 +107,14 @@ export default class ModalContent extends Component{
                             info
                         </Button>
                         <Modal
+                            header={false}
                             hasClose={true}
                             visible={isOpenD}
                             cancel={() => this.setState({isOpenD: false})}
                             footer={[
-                                <Button key='confirm' className='mr-20' type='Primary' text='确定' buttonStyle={{height: '40px', width: '120px'}}/>
+                                <Button key='confirm' className='mr-20' type='Primary' text='知道了' buttonStyle={{height: '40px', width: '120px'}}/>
                             ]}
+                            ref={modal => this._modal = modal}
                         >
                             <div>
                                 信息提示

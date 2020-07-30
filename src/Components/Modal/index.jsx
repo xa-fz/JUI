@@ -41,7 +41,6 @@ export default class Modal extends Component{
     */
     onMouseMove = e => { 
         const { translateX, translateY } = this.state;
-        console.log(translateX, translateY);
         if(this.moving){
             if(this.lastX && this.lastY) {
                 let dx = e.clientX - this.lastX;
@@ -62,7 +61,7 @@ export default class Modal extends Component{
     }
 
     render(){
-        const { visible, bodyStyle, hasClose, children, title, mask, footer } = this.props;
+        const { visible, bodyStyle, hasClose, children, title, mask, footer, header } = this.props;
         let margintop, marginleft, modalHeight, modalWidth;
         if(bodyStyle && bodyStyle.height){
             modalHeight = bodyStyle.height;
@@ -91,21 +90,30 @@ export default class Modal extends Component{
         }
         bodyStyle && !bodyStyle.marginLeft && Object.assign(modalStyle, {marginLeft: marginleft});
         bodyStyle && !bodyStyle.marginTop && Object.assign(modalStyle, {marginTop: margintop});
+
+        let headerStatus = true;
+        if (header !== undefined) {
+            headerStatus = header
+        }
+
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
                 <div className='dialog'
                     onMouseDown={e => this.onMouseDown(e)}
                     style={modalStyle}
                 >
-                    <div className='dialog-header'>
-                        <span className='dialog-title'>{title ? title : ''}</span>
-                        {
-                            showClose &&  
-                            <div className='fl-r' onClick={() => this.props.cancel()}>
-                                <Icon type='close' style={{float: 'right'}}/>
-                            </div>
-                        }
-                    </div>
+                    {
+                        headerStatus && 
+                        <div className='dialog-header'>
+                            <span className='dialog-title'>{title ? title : ''}</span>
+                            {
+                                showClose &&  
+                                <div className='fl-r' onClick={() => this.props.cancel()}>
+                                    <Icon type='close' style={{float: 'right'}}/>
+                                </div>
+                            }
+                        </div>
+                    }
                     <div className='dialog-body'>
                         {children}
                     </div>
