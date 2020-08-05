@@ -102,10 +102,30 @@ export default class ModalContent extends Component{
                 break;
                 case 'modal-tips':
                     item.showComponent = <div className='modalBorder modalTipsInfo'>
-                        <Button type='Default' handleClick={() => this.prompts.info('info', 'info title!', <div>this is a message!!</div>)} buttonStyle={{width: '120px'}}>
-                            info
-                        </Button>
-                        <Prompt promptRef={(p) => this.prompts = p}/>
+                        <div className="display mr-20">
+                            <Button type='Default' handleClick={() => this.prompts.info('info', 'info title!', <div>this is a message!!</div>)} buttonStyle={{width: '120px'}}>
+                                info
+                            </Button>
+                            <Prompt promptRef={p => this.prompts = p}/>
+                        </div>
+                        <div className="display mr-20">
+                            <Button type='Default' handleClick={() => this.prompts.success('success', 'successful!', <div>this is a successful message!!</div>)} buttonStyle={{width: '120px'}}>
+                                succes
+                            </Button>
+                            <Prompt promptRef={p => this.prompts = p}/>
+                        </div>
+                        <div className="display mr-20">
+                            <Button type='Default' handleClick={() => this.prompts.error('error', 'error!', <div>this is a error message!!</div>)} buttonStyle={{width: '120px'}}>
+                                error
+                            </Button>
+                            <Prompt promptRef={p => this.prompts = p}/>
+                        </div>
+                        <div className="display  v-top">
+                            <Button type='Default' handleClick={() => this.prompts.warning('warning', 'warning!', <div>this is a warning message!!</div>)} buttonStyle={{width: '120px'}}>
+                                warning
+                            </Button>
+                            <Prompt promptRef={p => this.prompts = p}/>
+                        </div>
                     </div>
                 break;
                 default:

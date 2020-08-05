@@ -95,7 +95,6 @@ export default class Modal extends Component{
         if (header !== undefined) {
             headerStatus = header
         }
-        console.log(mask);
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
                 <div className='dialog'
