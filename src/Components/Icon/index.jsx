@@ -2,7 +2,6 @@ import React from 'react';
 import PathInfo from './svg';
 
  const Icon = (props) => {
-    
     const { type, size, style } = props;
     let svgSize = {
         width: '3em',
@@ -33,9 +32,18 @@ import PathInfo from './svg';
         }
     }
 
+    let initStyle = Object.assign({
+        width: svgSize.width,
+        height: svgSize.height,
+        verticalAlign: 'middle',
+        fill: 'currentColor',
+        overflow: 'hidden',
+        marginRight: '5px'
+    }, style)
+
     return (
         <svg className="jui-icon"
-            style={{width: svgSize.width, height: svgSize.height, verticalAlign: 'middle', fill: 'currentColor', overflow: 'hidden',marginRight: '5px'}}
+            style={initStyle}
             viewBox="0 0 1024 1024"
             version="1.1"
             xmlns="http://www.w3.org/2000/svg"  

@@ -83,7 +83,7 @@ export default class Modal extends Component{
             transform: `translateX(${this.state.translateX}px)translateY(${this.state.translateY}px)`,
             ...(bodyStyle ? bodyStyle : {
                 width: modalWidth,
-                height: modalHeight,
+                minHeight: modalHeight,
                 marginTop: margintop,
                 marginLeft: marginleft,
             }) 
@@ -95,7 +95,7 @@ export default class Modal extends Component{
         if (header !== undefined) {
             headerStatus = header
         }
-
+        console.log(mask);
         return (
             <div className='jui-modal' style={{display: visible ? 'block' : 'none'}}>
                 <div className='dialog'
@@ -133,7 +133,7 @@ export default class Modal extends Component{
                 {
                     mask !== null && 
                     <div className='mask' onClick={() => {
-                        return mask === true || mask === undefined ? this.props.cancel() : ''
+                        return mask === true ? this.props.cancel() : ''
                      }}></div>
                 }
             </div>

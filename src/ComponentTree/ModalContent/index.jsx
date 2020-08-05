@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import RESOURCE from '../../resource';
 import Button from '../../Components/Button';
 import Modal from '../../Components/Modal';
+import Prompt from '../../Components/Prompt';
 
 export default class ModalContent extends Component{
     constructor(props){
@@ -10,8 +11,7 @@ export default class ModalContent extends Component{
             isOpen: false,
             isOpenA: false,
             isOpenB: false,
-            isOpenC: false,
-            isOpenD: false
+            isOpenC: false
         }
     }
 
@@ -38,7 +38,7 @@ export default class ModalContent extends Component{
         })
     }
     render(){
-        const { isOpen, isOpenA, isOpenB, isOpenC, isOpenD } = this.state;
+        const { isOpen, isOpenA, isOpenB, isOpenC } = this.state;
         RESOURCE.MODAL_INFO_ARR.forEach(item => {
             switch(item.type){
                 case 'modal-normal':
@@ -64,10 +64,10 @@ export default class ModalContent extends Component{
                             visible={isOpenB}
                             cancel={() => this.setState({isOpenB: false})}
                             title='title'
-                            mask={false}
+                            mask={true}
                         >
                             <div>
-                                不可点击遮罩层关闭
+                                可点击遮罩层关闭
                             </div>
                         </Modal>
                     </div>
@@ -101,25 +101,11 @@ export default class ModalContent extends Component{
                 </div>
                 break;
                 case 'modal-tips':
-                    item.showComponent = 
-                    <div className='modalBorder modalTipsInfo'>
-                        <Button type='Default' handleClick={() => this.setState({isOpenD: !this.state.isOpenD})} buttonStyle={{width: '120px'}}>
+                    item.showComponent = <div className='modalBorder modalTipsInfo'>
+                        <Button type='Default' handleClick={() => this.prompts.info('info', 'info title!', <div>this is a message!!</div>)} buttonStyle={{width: '120px'}}>
                             info
                         </Button>
-                        <Modal
-                            header={false}
-                            hasClose={true}
-                            visible={isOpenD}
-                            cancel={() => this.setState({isOpenD: false})}
-                            footer={[
-                                <Button key='confirm' className='mr-20' type='Primary' text='知道了' buttonStyle={{height: '40px', width: '120px'}}/>
-                            ]}
-                            ref={modal => this._modal = modal}
-                        >
-                            <div>
-                                信息提示
-                            </div>
-                        </Modal>
+                        <Prompt promptRef={(p) => this.prompts = p}/>
                     </div>
                 break;
                 default:
