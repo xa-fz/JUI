@@ -137,7 +137,6 @@ export default class ModalContent extends Component{
             <div className='contentCommonStyle modalContent'>
                 <div className='header'>
                     <h1>Modal 对话框</h1>
-                    <div className=''></div>
                 </div>
                 <div className='useComponent'>
                     {

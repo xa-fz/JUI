@@ -29,6 +29,12 @@ const RESOURCE = {
             title: '提示：操作结果的提示信息'
         }
     ],
+    TABLE_INFO_ARR: [
+        {
+            type: 'tab-basic',
+            describe: '默认带有分页的表格组件'
+        }
+    ],
     ICONS_NAME_ARR: [
         {
             name: 'Arrow up',

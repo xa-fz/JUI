@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import ButtonContent from './ButtonContent';
 import IconContent from './IconContent';
 import ModalContent from './ModalContent';
+import TableContent from './TableContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -27,7 +28,8 @@ class ComponentTree extends Component{
                             component: <IconContent />
                         }
                     ]
-                },{
+                },
+                {
                     id: '01',
                     compType: '提示信息',
                     listStatus: false,
@@ -36,6 +38,18 @@ class ComponentTree extends Component{
                             id: '01-01',
                             compName: 'Modal  对话框',
                             component:<ModalContent />
+                        }
+                    ]
+                },
+                {
+                    id: '02',
+                    compType: '数据展示',
+                    listStatus: false,
+                    childern: [
+                        {
+                            id: '02-01',
+                            compName: 'Table  表格',
+                            component: <TableContent />
                         }
                     ]
                 }
@@ -55,7 +69,7 @@ class ComponentTree extends Component{
             }
         })
         this.setState({
-            componentList : arr
+            componentList: arr
         })
     }
 
