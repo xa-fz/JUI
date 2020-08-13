@@ -10,24 +10,35 @@ export default class Table extends Component{
     }
 
     render(){
+        const { columns, datasource } = this.props;
+        let trArrs = [];
+        for (let i= 0; i < datasource.length; i++) {
+            let tdArrd = [];
+            for (let j = 0; j < columns.length; j++) {
+                let TD = <td key={columns[j].key}>
+                    {datasource[i][columns[j].dataIndex]}
+                </td>
+                tdArrd.push(TD);
+            }
+            let TR = <tr key={datasource[i].key}>
+                {tdArrd}
+            </tr>
+            trArrs.push(TR);
+        }
         return (
-            <table style={{border: '1px solid #000'}} className="">
-                <thead>
+            <table className="jui-table">
+                <thead className="jui-thead">
                     <tr>
-                        <th>name</th>
-                        <th>age</th>
+                        {
+                            columns && columns.length > 0 && columns.map(v => 
+                                <th key={v.title}>{v.title}</th>
+                            )
+                        }
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td>Tom</td>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <td>Lucy</td>
-                        <td>20</td>
-                    </tr>
+                <tbody className="jui-tbody">
+                    {trArrs}
                 </tbody>
             </table>
         )

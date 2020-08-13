@@ -11,14 +11,50 @@ export default class TableContent extends Component{
     }
 
     componentDidMount () {
+        let columns = [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name'
+            },
+            {
+                title: 'Age',
+                dataIndex: 'age',
+                key: 'age'
+            },
+            {
+                title: 'E-mail',
+                dataIndex: 'eMail',
+                key: 'eMail'
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                key: 'address'
+            }
+        ];
+        let data = [
+            {
+                key: '1',
+                name: 'Tom',
+                age: 18,
+                eMail: 'tt34@163.com',
+                address: `xi'an`
+            },
+            {
+                key: '2',
+                name: 'Lucy',
+                age: 20,
+                eMail: '135****2275@qq.com',
+                address: 'shanghai'
+            }
+        ];
         let currentComponent;
         RESOURCE.TABLE_INFO_ARR.forEach(item => {
             switch(item.type) {
                 case 'tab-basic':
                     currentComponent = 
-                    <Table>
-
-                    </Table>
+                    <Table columns={columns} datasource={data} />
                 break;
                 default:
                 break;
