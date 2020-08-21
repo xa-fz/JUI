@@ -33,6 +33,10 @@ const RESOURCE = {
         {
             type: 'tab-basic',
             describe: '默认带有分页的表格组件'
+        },
+        {
+            type: 'tab-arrangement',
+            describe: '可排列功能表格'
         }
     ],
     ICONS_NAME_ARR: [
@@ -71,6 +75,14 @@ const RESOURCE = {
         {
             name: 'Warning',
             type: 'warning'
+        },
+        {
+            name: 'Increasing',
+            type: 'increasing'
+        },
+        {
+            name: 'Decreasing',
+            type: 'decreasing'
         }
     ]
 }

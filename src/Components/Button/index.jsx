@@ -50,7 +50,7 @@ const Button = (props) => {
             <button
                 style={basicStyle}
                 className={'jui-btn ' + btnObj.btnStyle + ` ${className ? className : ""}`}
-                onClick={  clkBtn }
+                onClick={ clkBtn }
                 disabled={ disable }
             >
                 {icons}

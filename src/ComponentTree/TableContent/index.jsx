@@ -6,11 +6,34 @@ export default class TableContent extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            currentComponent: <span></span>
+            currentComponent: []
         }
     }
 
     componentDidMount () {
+        let data = [
+            {
+                key: '1',
+                name: 'Tom',
+                age: 18,
+                eMail: 'tt34@163.com',
+                address: 'Xi\'an'
+            },
+            {
+                key: '2',
+                name: 'LiMing',
+                age: 21,
+                eMail: 'LiMing@162.com',
+                address: 'Beijing'
+            },
+            {
+                key: '3',
+                name: 'Lucy',
+                age: 20,
+                eMail: '135****2275@qq.com',
+                address: 'Shanghai'
+            }
+        ];
         let columns = [
             {
                 title: 'Name',
@@ -33,35 +56,71 @@ export default class TableContent extends Component{
                 key: 'address'
             }
         ];
-        let data = [
+        let data1 = [
             {
                 key: '1',
                 name: 'Tom',
-                age: 18,
                 eMail: 'tt34@163.com',
-                address: `xi'an`
+                address: 'Xi\'an',
+                heigh: 176
             },
             {
                 key: '2',
+                name: 'LiMing',
+                eMail: 'LiMing@162.com',
+                address: 'Beijing',
+                heigh: 173
+            },
+            {
+                key: '3',
                 name: 'Lucy',
-                age: 20,
                 eMail: '135****2275@qq.com',
-                address: 'shanghai'
+                address: 'Shanghai',
+                heigh: 178
             }
         ];
-        let currentComponent;
+        let columns1 = [
+            {
+                title: 'Name',
+                dataIndex: 'name',
+                key: 'name'
+            },
+            {
+                title: 'Height(cm)',
+                dataIndex: 'heigh',
+                key: 'heigh',
+                sorted: {
+                    compare: (a, b) => a.heigh - b.heigh
+                }
+            },
+            {
+                title: 'E-mail',
+                dataIndex: 'eMail',
+                key: 'eMail'
+            },
+            {
+                title: 'Address',
+                dataIndex: 'address',
+                key: 'address'
+            }
+        ];
+
         RESOURCE.TABLE_INFO_ARR.forEach(item => {
             switch(item.type) {
                 case 'tab-basic':
-                    currentComponent = 
+                    item.currentComponent = 
                     <Table columns={columns} datasource={data} />
+                break;
+                case 'tab-arrangement':
+                    item.currentComponent = 
+                    <Table columns={columns1} datasource={data1} />
                 break;
                 default:
                 break;
             }
         })
         this.setState({
-            currentComponent
+            currentComponent: RESOURCE.TABLE_INFO_ARR
         })
     }
 
@@ -72,9 +131,13 @@ export default class TableContent extends Component{
                 <div className='header'>
                     <h1>Table 表格</h1>
                 </div>
-                <div className="tableComponent mt-20">
-                    {currentComponent}
-                </div>
+                {
+                    currentComponent.map(v => 
+                        <div key={v.type} className="tableComponent mt-20">
+                            {v.currentComponent}
+                        </div>
+                    )
+                }
             </div>
         )
     }

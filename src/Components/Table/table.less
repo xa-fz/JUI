@@ -5,6 +5,30 @@
     border-spacing: 0;
     .jui-thead {
         background-color: #fafafa;
+        .tab-title {
+            display: inline-block;
+        }
+        .tab-sorting {
+            display: inline-block;
+            vertical-align: middle;
+            .tab-icon {
+                height: 22px;
+                display:flex;
+                flex-flow: column;
+                margin-left: 5px;
+                .increase {
+                    flex: 1;
+                    width: 5px;
+                    height: 5px;
+                    margin-bottom: 2px;
+                }
+                .decrease {
+                    flex: 1;
+                    width: 5px;
+                    height: 5px
+                }
+            }
+        }
     }
     .jui-thead>tr>th {
         border-bottom: 1px solid #f0f0f0;
