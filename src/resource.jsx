@@ -36,7 +36,7 @@ const RESOURCE = {
         },
         {
             type: 'tab-arrangement',
-            describe: '可排列功能表格'
+            describe: '含排列功能表格'
         }
     ],
     ICONS_NAME_ARR: [
@@ -83,6 +83,10 @@ const RESOURCE = {
         {
             name: 'Decreasing',
             type: 'decreasing'
+        },
+        {
+            name: 'Theme',
+            type: 'theme'
         }
     ]
 }

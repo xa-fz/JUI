@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import './App.less';
 import ComponentTree from './ComponentTree/ComponentTree';
+import Theme from './Theme';
 
 class App extends Component{
   constructor(props){
@@ -24,6 +25,7 @@ class App extends Component{
         <div className='codeContent'>
           { this.state.showComponent }
         </div>
+        <Theme />
       </div>
     )
   }

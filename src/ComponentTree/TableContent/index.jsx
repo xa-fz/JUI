@@ -109,7 +109,7 @@ export default class TableContent extends Component{
             switch(item.type) {
                 case 'tab-basic':
                     item.currentComponent = 
-                    <Table columns={columns} datasource={data} />
+                    <Table columns={columns} datasource={data} />                 
                 break;
                 case 'tab-arrangement':
                     item.currentComponent = 
@@ -133,9 +133,12 @@ export default class TableContent extends Component{
                 </div>
                 {
                     currentComponent.map(v => 
-                        <div key={v.type} className="tableComponent mt-20">
-                            {v.currentComponent}
-                        </div>
+                        <React.Fragment>
+                            <h3>{v.describe}</h3>
+                            <div key={v.type} className="tableComponent mt-20">
+                                {v.currentComponent}
+                            </div>
+                        </React.Fragment>
                     )
                 }
             </div>
