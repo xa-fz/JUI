@@ -7,7 +7,8 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      showComponent: null
+      showComponent: null,
+      themeStatus: false
     }
   }
   getComponent = showComponent => {
@@ -15,9 +16,17 @@ class App extends Component{
       showComponent
     })
   }
+
+  cancelTheme = () => {
+    const { themeStatus } = this.state;
+    this.setState({
+      themeStatus: !themeStatus
+    })
+  }
+
   render(){
     return (
-      <div className="App">
+      <div className="App" onClick={this.cancelTheme}>
         <div className='componentList'>
           <div className='header'>JUI</div>
           <ComponentTree compConent = {this.getComponent}/>
@@ -25,7 +34,7 @@ class App extends Component{
         <div className='codeContent'>
           { this.state.showComponent }
         </div>
-        <Theme />
+        <Theme themeStatus={this.state.themeStatus} />
       </div>
     )
   }

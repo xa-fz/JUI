@@ -133,9 +133,9 @@ export default class TableContent extends Component{
                 </div>
                 {
                     currentComponent.map(v => 
-                        <React.Fragment>
+                        <React.Fragment key={v.type}>
                             <h3>{v.describe}</h3>
-                            <div key={v.type} className="tableComponent mt-20">
+                            <div className="tableComponent mt-20">
                                 {v.currentComponent}
                             </div>
                         </React.Fragment>
