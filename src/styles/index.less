@@ -1,2 +1,41 @@
 @theme_blue: #1890FF;
 @theme_dark_pink: #8B008B;
+@basic_color_white: #fff;
+
+// 蓝色主题
+.blue { 
+    @themeColor: @theme_blue;
+    .componentList {
+        .header:hover {
+            color: @themeColor;
+        }
+        .componentTree .Tree_list {
+            .listComponent:hover{
+                background-color: @themeColor;
+                color: @basic_color_white;
+            }
+            .listChoosed{
+                color: @themeColor;
+            }
+        }
+    }
+  }
+
+// 深红色主题
+.dark_pink {
+    @themeColor: @theme_dark_pink;
+    .componentList {
+        .header:hover {
+            color: @themeColor;
+        }
+        .componentTree .Tree_list {
+            .listComponent:hover{
+                background-color: @themeColor;
+                color: @basic_color_white;
+            }
+            .listChoosed{
+                color: @themeColor;
+            }
+        }
+    }
+  }
