@@ -52,6 +52,12 @@ class ComponentTree extends Component{
                             component: <TableContent />
                         }
                     ]
+                },
+                {
+                    id: '03',
+                    compType: '数据获取',
+                    listStatus: false,
+                    childern: []
                 }
             ]
         }
@@ -99,7 +105,7 @@ class ComponentTree extends Component{
                                 item.listState && 
                                 <div className='Tree_list'>
                                     {
-                                        item.childern.map((child) => 
+                                        item.childern.map(child => 
                                             <div className={`listComponent ${child.id === this.state.chooseId && 'listChoosed'}`}  key={child.id} onClick={() => this.showContent(child)}>
                                                 {child.compName}
                                             </div>

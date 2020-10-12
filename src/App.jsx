@@ -22,7 +22,7 @@ const App = () => {
     <div className={`App ${themeStyle}`} onClick={() => cancelTheme()}>
       <div className='componentList'>
         <div className='header'>JUI</div>
-        <ComponentTree compConent = {() => getComponent()}/>
+        <ComponentTree compConent = {v => getComponent(v)}/>
       </div>
       <div className='codeContent'>
         { showComponent }
