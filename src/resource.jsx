@@ -88,6 +88,12 @@ const RESOURCE = {
             name: 'Theme',
             type: 'theme'
         }
+    ],
+    UPLOAD_ARR: [
+        {
+            type: 'upload-basic',
+            title: '按钮点击文件上传'
+        }
     ]
 }
 

@@ -3,6 +3,7 @@ import ButtonContent from './ButtonContent';
 import IconContent from './IconContent';
 import ModalContent from './ModalContent';
 import TableContent from './TableContent';
+import UploadContent from './UploadContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -57,7 +58,13 @@ class ComponentTree extends Component{
                     id: '03',
                     compType: '数据获取',
                     listStatus: false,
-                    childern: []
+                    childern: [
+                        {
+                            id: '03-01',
+                            compName: 'Upload 上传',
+                            component: <UploadContent />
+                        }
+                    ]
                 }
             ]
         }
