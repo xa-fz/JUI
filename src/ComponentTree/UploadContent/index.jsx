@@ -30,7 +30,7 @@ const UploadContent = () => {
                     uploadArr.map(item => 
                     <div className='instructions' key={item.type}>
                         <div className='title'>{item.title}</div>
-                        <div className='content'>
+                        <div className='content uploadComponent'>
                             {item.showComponent}
                         </div>
                     </div>
