@@ -1,15 +1,44 @@
-import React, { useRef } from 'react';
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useRef, useState } from 'react';
+import Icon from '../Icon';
+import './upload.less'
 
 const Upload = () => {
-    const myRef = useRef(null);
+    const [images, set_images] = useState('');
+    const myRef = useRef(<React.Fragment></React.Fragment>);
     const chooseFile = () => {
-        console.log('选择文件');
         myRef.current.click();
     }
+
+    const uploadFile = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            let reader = new FileReader();
+            reader.onload = (e) => {
+                set_images(e.target.result);
+            };
+            reader.readAsDataURL(event.target.files[0]);
+          }
+    }
+
+    const deleteImages = () => {
+        myRef.current.value = "";
+        set_images("")
+    }
+
     return (
-        <div>
-			<input ref={myRef} type="file" style={{display: 'none'}} /><br />
-			<button onClick={() => chooseFile()}>选择上传文件</button>
+        <div className="jui-upload">
+            <div className="images" onClick={() => chooseFile()}>
+                {
+                    images === '' ? <div className="choose">+</div> : <img src={images} />
+                }
+                {
+                   images &&  
+                   <div onClick={e => e.stopPropagation()}><Icon style={{float: 'right', width: 30, height: 30}} type="close" 
+                                handleClick={() => deleteImages()} /></div>
+                }
+            </div>
+            <input ref={myRef} type="file" style={{display: 'none'}} onChange={e => uploadFile(e)} /><br />
+			<button className="upload-Btn" onClick={() => chooseFile()}>选择文件</button>
 		</div>
     )
 }

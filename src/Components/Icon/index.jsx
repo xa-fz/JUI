@@ -37,8 +37,7 @@ import PathInfo from './svg';
         height: svgSize.height,
         verticalAlign: 'middle',
         fill: 'currentColor',
-        overflow: 'hidden',
-        marginRight: '5px'
+        overflow: 'hidden'
     }, style)
 
     return (
