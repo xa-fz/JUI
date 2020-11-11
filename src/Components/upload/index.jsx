@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useRef, useState } from 'react';
 import Icon from '../Icon';
 import './upload.less'
@@ -29,7 +28,7 @@ const Upload = () => {
         <div className="jui-upload">
             <div className="images" onClick={() => chooseFile()}>
                 {
-                    images === '' ? <div className="choose">+</div> : <img src={images} />
+                    images === '' ? <div className="choose">+</div> : <img src={images} alt="点击导入本地图片" />
                 }
                 {
                    images &&  
