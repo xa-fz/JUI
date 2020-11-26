@@ -28,7 +28,6 @@ const Upload = (props) => {
     const uploadFile = (event) => {
         console.log(event.target.files);
         if (event.target.files && event.target.files[0]) {
-            props.getFile(event.target.files[0]);
             let reader = new FileReader();
             reader.onload = (e) => {
                 setImages(e.target.result);
@@ -40,28 +39,32 @@ const Upload = (props) => {
 
     const deleteImages = () => {
         myRef.current.value = "";
-        setImages("")
+        setImages("");
+        set_file_info({});
     }
 
     return (
         <div className="jui-upload">
             <div className="upload-content">
-                <div className="images" style={imageStyle} onClick={() => chooseFile()}>
-                    {
-                        images === '' ? <div className="choose">+</div> : <img src={images} alt={alt} />
-                    }
-                    {
-                    images &&  
-                    <div onClick={e => e.stopPropagation()}>
-                        <Icon style={{float: 'right', width: 30, height: 30}} type="close" handleClick={() => deleteImages()} />
+                {
+                    props && props.accept && props.accept.includes('image') && 
+                        <div className="images" style={imageStyle} onClick={() => chooseFile()}>
+                            {
+                                images === '' ? <div className="choose">+</div> : <img src={images} alt={alt} />
+                            }
+                            {
+                            images &&  
+                            <div onClick={e => e.stopPropagation()}>
+                                <Icon style={{float: 'right', width: 30, height: 30}} type="close" handleClick={() => deleteImages()} />
+                                </div>
+                            }
                         </div>
-                    }
-                </div>
+                }
                 <input ref={myRef} type="file" style={{display: 'none'}} onChange={e => uploadFile(e)} accept={props && props.accept ? props.accept : '*'} /><br />
-                <button className="upload-Btn" onClick={() => chooseFile()}>选择图片</button>
+                <button className="upload-Btn" onClick={() => chooseFile()}>选择文件</button>
             </div>
-            <div className='file-name'>
-                <div>{file_info.name}</div>
+            <div className='file-name' style={{cursor: file_info && file_info.name && file_info.name.includes('pdf') ? 'pointer' : 'default'}}>
+                {file_info && file_info.name}
             </div>
 		</div>
     )

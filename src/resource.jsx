@@ -92,7 +92,10 @@ const RESOURCE = {
     UPLOAD_ARR: [
         {
             type: 'upload-basic',
-            title: '按钮点击图片上传'
+            title: '基础上传功能'
+        },{
+            type: 'upload-pic',
+            title: '图片上传功能'
         }
     ]
 }

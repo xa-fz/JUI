@@ -4,7 +4,6 @@ import Upload from '../../Components/upload';
 
 const UploadContent = () => {
     const [uploadArr, set_uploadArr] = useState([]);
-    const [fileInfo, setFileInfo] = useState({});
 
     useEffect(() => {
         let uploadInfo = RESOURCE.UPLOAD_ARR;
@@ -12,23 +11,22 @@ const UploadContent = () => {
             switch(item.type){ 
                 case 'upload-basic':
                     item.showComponent = 
-                        <React.Fragment>
-                            <Upload 
-                                contentStyle={{width: '200px', height: '200px', border: '1px solid #808080'}}
-                                alt='请选择图片'
-                                getFile={(file) => {
-                                    setFileInfo(file);
-                                }}
-                                accept='image/*'
-                            />
-                        </React.Fragment>
+                        <Upload />
+                    break;
+                case 'upload-pic':
+                    item.showComponent = 
+                        <Upload 
+                            contentStyle={{width: '200px', height: '200px', border: '1px solid #808080'}}
+                            alt='请选择图片'
+                            accept='image/*'
+                        />
                     break;
                 default:
                     break;
             }
         })
         set_uploadArr(uploadInfo);
-    }, [setFileInfo, fileInfo])
+    }, [])
 
     return (
         <div className="contentCommonStyle uploadContent">
