@@ -6,6 +6,7 @@ const Upload = (props) => {
     const [images, setImages] = useState('');
     const [imageStyle, setImageStyle] = useState({});
     const [alt, setAlt] = useState('');
+    const [file_info, set_file_info] = useState({});
 
     useEffect(() => {
         if (props && props.contentStyle) {
@@ -33,7 +34,8 @@ const Upload = (props) => {
                 setImages(e.target.result);
             };
             reader.readAsDataURL(event.target.files[0]);
-          }
+            set_file_info(event.target.files[0]);
+        }
     }
 
     const deleteImages = () => {
@@ -43,19 +45,24 @@ const Upload = (props) => {
 
     return (
         <div className="jui-upload">
-            <div className="images" style={imageStyle} onClick={() => chooseFile()}>
-                {
-                    images === '' ? <div className="choose">+</div> : <img src={images} alt={alt} />
-                }
-                {
-                   images &&  
-                   <div onClick={e => e.stopPropagation()}>
-                       <Icon style={{float: 'right', width: 30, height: 30}} type="close" handleClick={() => deleteImages()} />
-                    </div>
-                }
+            <div className="upload-content">
+                <div className="images" style={imageStyle} onClick={() => chooseFile()}>
+                    {
+                        images === '' ? <div className="choose">+</div> : <img src={images} alt={alt} />
+                    }
+                    {
+                    images &&  
+                    <div onClick={e => e.stopPropagation()}>
+                        <Icon style={{float: 'right', width: 30, height: 30}} type="close" handleClick={() => deleteImages()} />
+                        </div>
+                    }
+                </div>
+                <input ref={myRef} type="file" style={{display: 'none'}} onChange={e => uploadFile(e)} accept={props && props.accept ? props.accept : '*'} /><br />
+                <button className="upload-Btn" onClick={() => chooseFile()}>选择图片</button>
             </div>
-            <input ref={myRef} type="file" style={{display: 'none'}} onChange={e => uploadFile(e)} /><br />
-			<button className="upload-Btn" onClick={() => chooseFile()}>选择文件</button>
+            <div className='file-name'>
+                <div>{file_info.name}</div>
+            </div>
 		</div>
     )
 }

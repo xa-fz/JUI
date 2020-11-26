@@ -7,7 +7,6 @@ const UploadContent = () => {
     const [fileInfo, setFileInfo] = useState({});
 
     useEffect(() => {
-        console.log(fileInfo.name);
         let uploadInfo = RESOURCE.UPLOAD_ARR;
         uploadInfo.forEach(item => {
             switch(item.type){ 
@@ -18,13 +17,10 @@ const UploadContent = () => {
                                 contentStyle={{width: '200px', height: '200px', border: '1px solid #808080'}}
                                 alt='请选择图片'
                                 getFile={(file) => {
-                                    console.log(file);
                                     setFileInfo(file);
                                 }}
+                                accept='image/*'
                             />
-                            <div className='basicUploadInfo'>
-                                <div>{fileInfo.name}</div>
-                            </div>
                         </React.Fragment>
                     break;
                 default:
@@ -32,7 +28,7 @@ const UploadContent = () => {
             }
         })
         set_uploadArr(uploadInfo);
-    }, [fileInfo])
+    }, [setFileInfo, fileInfo])
 
     return (
         <div className="contentCommonStyle uploadContent">
