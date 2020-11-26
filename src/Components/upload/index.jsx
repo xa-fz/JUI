@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Icon from '../Icon';
-import './upload.less'
+import './upload.less';
 
 const Upload = (props) => {
     const [images, setImages] = useState('');
@@ -25,9 +25,20 @@ const Upload = (props) => {
         myRef.current.click();
     }
 
+    const judgeSize = useCallback((fileSize) => {
+        if (props && props.size && (fileSize > (1024 * 1024 * props.size))) {
+            console.log('文件过大'); // 待开发了提示信息组件后加入
+            return
+        }
+    }, [props])
+
     const uploadFile = (event) => {
-        console.log(event.target.files);
         if (event.target.files && event.target.files[0]) {
+            judgeSize(event.target.files[0].size);
+            var data=new FormData();
+            data.append("filesData", event.target.files[0]);
+            props.onChange(data);
+            // 读取文件
             let reader = new FileReader();
             reader.onload = (e) => {
                 setImages(e.target.result);
@@ -63,9 +74,12 @@ const Upload = (props) => {
                 <input ref={myRef} type="file" style={{display: 'none'}} onChange={e => uploadFile(e)} accept={props && props.accept ? props.accept : '*'} /><br />
                 <button className="upload-Btn" onClick={() => chooseFile()}>选择文件</button>
             </div>
-            <div className='file-name' style={{cursor: file_info && file_info.name && file_info.name.includes('pdf') ? 'pointer' : 'default'}}>
-                {file_info && file_info.name}
-            </div>
+            {
+                file_info && 
+                <div className='file-name' style={{cursor: file_info && file_info.name && file_info.name.includes('pdf') ? 'pointer' : 'default'}}>
+                    { file_info.name}
+                </div>
+            }
 		</div>
     )
 }
