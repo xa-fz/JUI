@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Icon from '../Icon';
+import Prompt from '../Prompt';
 import './upload.less';
 
 const Upload = (props) => {
@@ -7,6 +8,8 @@ const Upload = (props) => {
     const [imageStyle, setImageStyle] = useState({});
     const [alt, setAlt] = useState('');
     const [file_info, set_file_info] = useState({});
+    const myRef = useRef(<React.Fragment></React.Fragment>);
+    const promptRef = useRef(<React.Fragment></React.Fragment>);
 
     useEffect(() => {
         if (props && props.contentStyle) {
@@ -20,25 +23,22 @@ const Upload = (props) => {
         setAlt(alt);
     }, [props])
 
-    const myRef = useRef(<React.Fragment></React.Fragment>);
     const chooseFile = () => {
         myRef.current.click();
     }
 
-    const judgeSize = useCallback((fileSize) => {
-        if (props && props.size && (fileSize > (1024 * 1024 * props.size))) {
-            console.log('文件过大'); // 待开发了提示信息组件后加入
-            return
-        }
-    }, [props])
-
     const uploadFile = (event) => {
         if (event.target.files && event.target.files[0]) {
-            judgeSize(event.target.files[0].size);
-            var data=new FormData();
+            if(props && props.size && event.target.files[0].size > 1024 * 1024 * props.size) {
+                promptRef.current.warning('warning', '提示!', `文件不能大于${props.size}MB，请重新选择！`);
+                myRef.current.value = "";
+                return
+            }
+            // Blob类型
+            let data = new FormData();
             data.append("filesData", event.target.files[0]);
             props.onChange(data);
-            // 读取文件
+            // base64类型
             let reader = new FileReader();
             reader.onload = (e) => {
                 setImages(e.target.result);
@@ -80,6 +80,7 @@ const Upload = (props) => {
                     { file_info.name}
                 </div>
             }
+            <Prompt ref={promptRef} />
 		</div>
     )
 }

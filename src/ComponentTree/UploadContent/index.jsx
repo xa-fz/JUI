@@ -4,12 +4,10 @@ import Upload from '../../Components/upload';
 
 const UploadContent = () => {
     const [uploadArr, set_uploadArr] = useState([]);
-    const [image_base64, set_image_base64] = useState('');
 
     const handleChange = (url_data) => {
-        // 返回base64，可以上传服务器
+        // 拿到文件上传服务器
         console.log(url_data);
-        set_image_base64(url_data);
     }
 
     useEffect(() => {
@@ -27,7 +25,7 @@ const UploadContent = () => {
                             alt='请选择图片'
                             accept='image/*'
                             onChange={handleChange}
-                            size={10}
+                            size={0.001}
                         />
                     break;
                 default:
@@ -35,7 +33,7 @@ const UploadContent = () => {
             }
         })
         set_uploadArr(uploadInfo);
-    }, [image_base64])
+    }, [])
 
     return (
         <div className="contentCommonStyle uploadContent">

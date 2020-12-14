@@ -15,7 +15,7 @@ export default class Prompt extends Component{
     }
 
     componentDidMount(){
-        this.props.promptRef(this)
+        this.props && this.props.promptRef && this.props.promptRef(this)
     }
 
     info = (type, title, content) => {
