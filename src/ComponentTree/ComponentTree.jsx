@@ -4,6 +4,7 @@ import IconContent from './IconContent';
 import ModalContent from './ModalContent';
 import TableContent from './TableContent';
 import UploadContent from './UploadContent';
+import LayoutContent from './LayoutContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -63,6 +64,18 @@ class ComponentTree extends Component{
                             id: '03-01',
                             compName: 'Upload 上传',
                             component: <UploadContent />
+                        }
+                    ]
+                },
+                {
+                    id: '04',
+                    compType: '布局',
+                    listStatus: false,
+                    childern: [
+                        {
+                            id: '04-01',
+                            compName: 'layout布局',
+                            component: <LayoutContent />
                         }
                     ]
                 }

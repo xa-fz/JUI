@@ -97,6 +97,12 @@ const RESOURCE = {
             type: 'upload-pic',
             title: '图片上传功能'
         }
+    ],
+    LAYOUT_ARR: [
+        {
+            type: 'layout-column',
+            title: '纵向布局'
+        }
     ]
 }
 
