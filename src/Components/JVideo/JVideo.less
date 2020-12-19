@@ -1,0 +1,34 @@
+
+.jui-Video {
+    
+    .video-show {
+        position:relative;
+        .pic-cover {
+            height: 100%;
+            width: 100%;
+        }
+        .pic-play {
+            position: absolute;
+            text-align: center;
+            z-index: 1;
+            cursor: pointer;
+        }
+    }
+    .video-play {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        .video {
+            z-index: 1000;
+            position: absolute;
+            height: 340px;
+            width: 600px;
+            top: calc(50% - 170px);
+            left: calc(50% - 300px);
+        }
+    }
+}
