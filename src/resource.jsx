@@ -103,7 +103,17 @@ const RESOURCE = {
             type: 'layout-column',
             title: '纵向布局'
         }
-    ]
+    ],
+    VIDEO_ARR: [
+        {
+            type: 'basic',
+            title: '基础视频播放'
+        },
+        {
+            type: 'Vstyle',
+            title: '可控制视频大小及其他样式'
+        }
+    ],
 }
 
 export default RESOURCE

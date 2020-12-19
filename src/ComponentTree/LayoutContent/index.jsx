@@ -23,7 +23,7 @@ const LayoutContent = () => {
     return (
         <ComponentLayout 
             head='Layout 布局'
-            contentStyle={{
+            className={{
                 layoutBodyStyle: 'layoutContent', 
                 componentStyle: 'layoutComponent'
             }}
