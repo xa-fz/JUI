@@ -5,6 +5,7 @@ import ModalContent from './ModalContent';
 import TableContent from './TableContent';
 import UploadContent from './UploadContent';
 import LayoutContent from './LayoutContent';
+import JVideoContent from './JVideoContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -52,6 +53,11 @@ class ComponentTree extends Component{
                             id: '02-01',
                             compName: 'Table  表格',
                             component: <TableContent />
+                        },
+                        {
+                            id: '02-02',
+                            compName: 'H5Video 播放器',
+                            component: <JVideoContent />
                         }
                     ]
                 },
