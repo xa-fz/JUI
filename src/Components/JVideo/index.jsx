@@ -20,7 +20,9 @@ const JVideo = (props) =>{
         });
     },[props])
 
-    const { url, coverPic } = props;
+    const { url, coverPic, style } = props;
+    const videoWidth = style && style.videoWidth ? style.videoWidth : '600px';
+    const videoHeight = style && style.videoHeight ? style.videoHeight : '340px';
     return (
         <div className="jui-Video">
             <div className="video-show" style={area_style}>
@@ -31,7 +33,7 @@ const JVideo = (props) =>{
             {
                 visible_play && 
                 <div className="video-play">
-                    <video src={ url || '' } className="video" controls></video>
+                    <video src={ url || '' } width={videoWidth} height={videoHeight} className="video" controls></video>
                     <Icon type='close' handleClick={ () => set_visble_play(false) }
                     style={{color: '#fff', zIndex: 1000, cursor: 'pointer', position: 'absolute', right: 'calc(50% - 300px)', top: 'calc(50% - 160px)'}}/>
                 </div>

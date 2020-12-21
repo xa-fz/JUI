@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import JVideo from '../../Components/JVideo';
 import ComponentLayout from '../ComponentLayout';
 import RESOURCE from '../../resource';
-// import { Cartoon } from '../../resources/videos';
+import { movie } from '../../resources/videos';
 import { Cover } from '../../resources/pic'; 
 
 const JVideoContent = () => {
@@ -14,11 +14,17 @@ const JVideoContent = () => {
             switch(item.type) {
                 case 'basic':
                     item.showComponent = 
-                    <JVideo url='' coverPic={Cover} />
+                    <JVideo url={movie} coverPic={Cover} />
                     break;
                 case 'Vstyle':
                     item.showComponent = 
-                    <JVideo url='' areaStyle={{width: '300px', height: '160px'}}/>
+                    <JVideo url={movie} areaStyle={{width: '300px', height: '160px'}}/>
+                    break;
+                case 'WHvideo':
+                    item.showComponent = 
+                    <JVideo url={movie} style={{
+                        videoWidth: '200px', videoHieght: '100px'
+                    }}/>
                     break;
                 default:
                     break;

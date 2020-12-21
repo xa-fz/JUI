@@ -1,5 +1,5 @@
-// import Cartoon from './Cartoon.mp4';
+import movie from './movie.ogv';
 
-// export {
-//     Cartoon
-// }
+export {
+    movie
+}

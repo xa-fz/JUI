@@ -111,7 +111,11 @@ const RESOURCE = {
         },
         {
             type: 'Vstyle',
-            title: '可控制视频大小及其他样式'
+            title: '可控制点击视频区域大小及其他样式'
+        },
+        {
+            type: 'WHvideo',
+            title: '视频宽高属性'
         }
     ],
 }
