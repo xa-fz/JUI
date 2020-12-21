@@ -23,7 +23,7 @@ const JVideoContent = () => {
                 case 'WHvideo':
                     item.showComponent = 
                     <JVideo url={movie} style={{
-                        videoWidth: '200px', videoHieght: '100px'
+                        videoWidth: '400px', videoHeight: '150px'
                     }}/>
                     break;
                 default:

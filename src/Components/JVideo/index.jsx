@@ -33,9 +33,16 @@ const JVideo = (props) =>{
             {
                 visible_play && 
                 <div className="video-play">
-                    <video src={ url || '' } width={videoWidth} height={videoHeight} className="video" controls></video>
+                    <video width={videoWidth} height={videoHeight} style={{
+                        minHight: '170px',
+                        minWith: '300px',
+                        top: `calc(50% - ${videoHeight ? videoHeight: '85px'} / 2)`,
+                        left: `calc(50% - ${videoWidth ? videoWidth: '150px'} / 2)`
+                        }} className="video" controls>
+                        <source src={ url || ''}/>
+                    </video>
                     <Icon type='close' handleClick={ () => set_visble_play(false) }
-                    style={{color: '#fff', zIndex: 1000, cursor: 'pointer', position: 'absolute', right: 'calc(50% - 300px)', top: 'calc(50% - 160px)'}}/>
+                    style={{color: '#fff', zIndex: 1000, cursor: 'pointer', position: 'absolute', right: `calc(50% - ${videoWidth ? videoWidth: '150px'} / 2)`, top: `calc(50% - ${videoHeight ? videoHeight: '85px'} / 2)`}}/>
                 </div>
             }
         </div>
