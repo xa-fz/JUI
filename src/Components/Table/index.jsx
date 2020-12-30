@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Pagination from '../Pagination';
 import Icon from '../Icon';
 import './table.less'
 
@@ -6,14 +7,25 @@ export default class Table extends Component{
     constructor(props){
         super(props);
         this.state={
-            datasource: []
+            datasource: [],
+            pagination: {},
+            showPagination: true
         };
     }
 
     componentDidMount () {
-        const { datasource } = this.props;
+        const { datasource, pagination } = this.props;
+        const obj = { pageSize: 0, currentSize: 0 }
+        let showPagination = false;
+        if (pagination) {
+            obj.pageSize = pagination.pageSize ? pagination.pageSize : 5;
+            obj.currentSize = pagination.currentSize ? pagination.currentSize : 1;
+            showPagination = true;
+        }
         this.setState({
-            datasource
+            datasource,
+            pagination: obj,
+            showPagination
         })
     }
 
@@ -39,7 +51,7 @@ export default class Table extends Component{
 
     render(){
         const { columns } = this.props;
-        const { datasource } = this.state;
+        const { datasource, pagination, showPagination } = this.state;
         let trArrs = [];
         for (let i= 0; i < datasource.length; i++) {
             let tdArrd = [];
@@ -49,9 +61,7 @@ export default class Table extends Component{
                 </td>
                 tdArrd.push(TD);
             }
-            let TR = <tr key={datasource[i].key}>
-                {tdArrd}
-            </tr>
+            let TR = <tr key={datasource[i].key}>{tdArrd}</tr>
             trArrs.push(TR);
         }
         let iconStyle = {
@@ -61,40 +71,45 @@ export default class Table extends Component{
             verticalAlign: 'top'
         }
         return (
-            <table className="jui-table">
-                <thead className="jui-thead">
-                    <tr>
-                        {
-                            columns && columns.length > 0 && columns.map(v => 
-                                <th key={v.title} >
-                                    <div className='tab-title'>{v.title}</div>
-                                    {
-                                        v.sorted && 
-                                        <div className='tab-sorting'>
-                                            <div className='tab-icon'>
-                                                <div className='increase' title='升序'>
-                                                    <Icon handleClick={() => this.sorting(v.dataIndex, (a, b) => a - b)} 
-                                                        style={Object.assign(iconStyle, {})} type='increasing'
-                                                    />
-                                                </div>
-                                                <div className='decrease' title='降序'>
-                                                    <Icon handleClick={() => this.sorting(v.dataIndex, (a, b) => b - a)} 
-                                                        style={Object.assign(iconStyle, {})} type='decreasing'
-                                                    />
+            <>
+                <table className="jui-table">
+                    <thead className="jui-thead">
+                        <tr>
+                            {
+                                columns && columns.length > 0 && columns.map(v => 
+                                    <th key={v.title} >
+                                        <div className='tab-title'>{v.title}</div>
+                                        {
+                                            v.sorted && 
+                                            <div className='tab-sorting'>
+                                                <div className='tab-icon'>
+                                                    <div className='increase' title='升序'>
+                                                        <Icon handleClick={() => this.sorting(v.dataIndex, (a, b) => a - b)} 
+                                                            style={Object.assign(iconStyle, {})} type='increasing'
+                                                        />
+                                                    </div>
+                                                    <div className='decrease' title='降序'>
+                                                        <Icon handleClick={() => this.sorting(v.dataIndex, (a, b) => b - a)} 
+                                                            style={Object.assign(iconStyle, {})} type='decreasing'
+                                                        />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    }
-                                </th>
-                            )
-                        }
-                    </tr>
-                </thead>
+                                        }
+                                    </th>
+                                )
+                            }
+                        </tr>
+                    </thead>
 
-                <tbody className="jui-tbody">
-                    {trArrs}
-                </tbody>
-            </table>
+                    <tbody className="jui-tbody">
+                        {trArrs}
+                    </tbody>
+                </table>
+                {
+                    showPagination && <Pagination {...pagination}/>
+                }
+            </> 
         )
     }
 }

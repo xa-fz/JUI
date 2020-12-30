@@ -32,11 +32,11 @@ const RESOURCE = {
     TABLE_INFO_ARR: [
         {
             type: 'tab-basic',
-            describe: '默认带有分页的表格组件'
+            title: '默认带有分页的表格组件'
         },
         {
             type: 'tab-arrangement',
-            describe: '含排列功能表格'
+            title: '含排列功能表格'
         }
     ],
     ICONS_NAME_ARR: [

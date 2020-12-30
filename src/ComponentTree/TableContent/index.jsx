@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import RESOURCE from '../../resource';
 import Table from '../../Components/Table';
+import ComponentLayout from '../ComponentLayout';
 
 export default class TableContent extends Component{
     constructor(props) {
@@ -108,11 +109,11 @@ export default class TableContent extends Component{
         RESOURCE.TABLE_INFO_ARR.forEach(item => {
             switch(item.type) {
                 case 'tab-basic':
-                    item.currentComponent = 
-                    <Table columns={columns} datasource={data} />                 
+                    item.showComponent = 
+                    <Table columns={columns} datasource={data} pagination={{pageSize: 2}}/>                 
                 break;
                 case 'tab-arrangement':
-                    item.currentComponent = 
+                    item.showComponent = 
                     <Table columns={columns1} datasource={data1} />
                 break;
                 default:
@@ -127,21 +128,14 @@ export default class TableContent extends Component{
     render() {
         const { currentComponent } = this.state;
         return (
-            <div className="contentCommonStyle tableContent">
-                <div className='header'>
-                    <h1>Table 表格</h1>
-                </div>
-                {
-                    currentComponent.map(v => 
-                        <React.Fragment key={v.type}>
-                            <h3>{v.describe}</h3>
-                            <div className="tableComponent mt-20">
-                                {v.currentComponent}
-                            </div>
-                        </React.Fragment>
-                    )
-                }
-            </div>
+            <ComponentLayout
+                head='Table 表格'
+                className={{
+                    layoutBodyStyle: 'tableContent', 
+                    componentStyle: 'tableComponent'
+                }}
+                data={currentComponent}
+            />
         )
     }
 }
