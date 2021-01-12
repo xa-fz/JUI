@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './layout.less';
 
-const Layout = () =>{
+const Layout = (props) =>{
+    const { children } = props;
+    console.log(children);
+
     return (
         <div className="jui-layout">
 

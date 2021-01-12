@@ -100,8 +100,8 @@ const RESOURCE = {
     ],
     LAYOUT_ARR: [
         {
-            type: 'layout-column',
-            title: '纵向布局'
+            type: 'layout-basic',
+            title: '传统布局'
         }
     ],
     VIDEO_ARR: [

@@ -3,21 +3,28 @@ import Layout from '../../Components/Layout';
 import ComponentLayout from '../ComponentLayout';
 import RESOURCE from '../../resource';
 
+const { Header } = Layout;
+
 const LayoutContent = () => {
-    const [layoutArr, set_layoutArr] = useState([]);
+    const [layout_arr, set_layout_arr] = useState([]);
 
     useEffect(() => {
         let layoutArr = RESOURCE.LAYOUT_ARR;
         layoutArr.forEach(item => {
             switch(item.type) {
-                case 'upload-basic':
-                    item.showComponent = <Layout />
+                case 'layout-basic':
+                    item.showComponent = 
+                    <Layout>
+                        <Header>
+                            头部
+                        </Header>
+                    </Layout>
                     break;
                 default:
                     break;
             }
         })
-        set_layoutArr(layoutArr);
+        set_layout_arr(layoutArr);
     }, [])
 
     return (
@@ -27,7 +34,7 @@ const LayoutContent = () => {
                 layoutBodyStyle: 'layoutContent', 
                 componentStyle: 'layoutComponent'
             }}
-            data={layoutArr}
+            data={layout_arr}
         />
     )
 }
