@@ -7,7 +7,9 @@ class Utils {
         const month = this._format(date.getMonth() + 1);
         const day = this._format(date.getDate());
         const weekDay = date.getDay();
-        return `${year}-${month}-${day} 星期${weekDay}`
+        const weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        const week = weeks[weekDay];
+        return `${year}-${month}-${day} ${week}`
     }
 
     _format = t => {

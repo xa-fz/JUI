@@ -23,12 +23,14 @@ class ComponentTree extends Component{
                         {
                             id: '00-01',
                             compName: 'Button 按钮',
-                            component: <ButtonContent />
+                            component: <ButtonContent />,
+                            path: 'buttons'
                         },
                         {
                             id: '00-02',
                             compName: 'Icon图标',
-                            component: <IconContent />
+                            component: <IconContent />,
+                            path: 'icons'
                         }
                     ]
                 },
@@ -40,7 +42,8 @@ class ComponentTree extends Component{
                         {
                             id: '01-01',
                             compName: 'Modal  对话框',
-                            component:<ModalContent />
+                            component:<ModalContent />,
+                            path: 'modals'
                         }
                     ]
                 },
@@ -52,12 +55,14 @@ class ComponentTree extends Component{
                         {
                             id: '02-01',
                             compName: 'Table  表格',
-                            component: <TableContent />
+                            component: <TableContent />,
+                            path: 'tables'
                         },
                         {
                             id: '02-02',
                             compName: 'H5Video 播放器',
-                            component: <JVideoContent />
+                            component: <JVideoContent />,
+                            path: 'h5Videos'
                         }
                     ]
                 },
@@ -69,7 +74,8 @@ class ComponentTree extends Component{
                         {
                             id: '03-01',
                             compName: 'Upload 上传',
-                            component: <UploadContent />
+                            component: <UploadContent />,
+                            path: 'uploads'
                         }
                     ]
                 },
@@ -81,7 +87,8 @@ class ComponentTree extends Component{
                         {
                             id: '04-01',
                             compName: 'layout布局',
-                            component: <LayoutContent />
+                            component: <LayoutContent />,
+                            path: 'layouts'
                         }
                     ]
                 }
@@ -109,7 +116,7 @@ class ComponentTree extends Component{
      * @method 展示组件内容
      */
     showContent = child => {
-        this.props.compConent(child.component);
+        this.props.compConent(child.component, child.path);
         this.setState({
             chooseId: child.id
         })
