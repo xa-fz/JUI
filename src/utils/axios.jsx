@@ -2,23 +2,37 @@ import axios from 'axios';
 
 class httpWorker {
     get = (url, data) => {
-        axios.get(url, {
-            params: data
-        }).then((res)=>{
+        axios.get({
+            method:'get',
+            url,
+            data,
+          }).then((res)=>{
             console.log(res)
         })
     }
 
-    post = () => {
-        
+    post = (url, data) => {
+        axios.post({
+            method:'post',
+            url,
+            data
+        }).then(res=>{
+            console.log(res)
+        })
     }
 
-    delete = () => {
-        
+    delete = (url, data) => {
+        axios.delete(url,{
+            data
+          }).then(res=>{
+            console.log(res)
+          })
     }
 
-    put = () => {
-        
+    put = (url, data) => {
+        axios.put(url, data).then(res=>{
+            console.log(res)
+          })
     }
 }
 
