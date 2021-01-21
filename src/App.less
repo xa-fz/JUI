@@ -62,8 +62,12 @@
     height: 100%;
     .top-header {
       height: 60px;
-      border-bottom: 2px solid #d9d9d9;
+      width: 100%;
       box-shadow: 0px 2px 5px #d9d9d9;
+      background-color: #323233;
+      color: #C96567;
+      font-weight: 700;
+      font-style: oblique;
     }
     .codeContent {
       overflow: auto;
@@ -72,9 +76,13 @@
       &::-webkit-scrollbar {display:none}
       .welcome {
         position: absolute;
-        top: 45%;
-        left: 45%;
+        top: 40%;
+        left: 40%;
         font-size: xxx-large;
+        cursor: pointer;
+        &:hover{
+          color: rgba(1, 1 ,1,.4)
+        }
       }
     }
   }
