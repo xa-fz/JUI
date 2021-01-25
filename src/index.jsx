@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from './store';
 import './index.css';
 import App from './App';
+import Home from './Home/Home';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './Contexts/theme-context';
 
@@ -13,7 +14,8 @@ ReactDOM.render(
         <Provider store={store}>
             <ThemeProvider>
                 <Router>
-                    <Route exact path='/' component={App}></Route>
+                    <Route exact path='/' component={Home}></Route>
+                    <Route exact path='/jui' component={App}></Route>
                 </Router>
             </ThemeProvider>
         </Provider>

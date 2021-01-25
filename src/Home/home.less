@@ -1,0 +1,28 @@
+.jui-home {
+    height: 100%;
+    .top-header {
+        height: 60px;
+        width: 100%;
+        box-shadow: 0px 2px 5px #d9d9d9;
+        background-color: #323233;
+        color: #C96567;
+        font-weight: 700;
+        font-style: oblique;
+    }
+    .content {
+        overflow: auto;
+        background-color: #3AAFA9;
+        height: calc(100% - 62px);
+        &::-webkit-scrollbar {display:none}
+        .welcome {
+            font-size: xxx-large;
+            cursor: pointer;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            &:hover{
+                color: rgba(1, 1 ,1,.4)
+            }
+        }
+    }
+}
