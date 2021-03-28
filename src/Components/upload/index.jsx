@@ -37,7 +37,7 @@ const Upload = (props) => {
             // Blob类型
             let data = new FormData();
             data.append("filesData", event.target.files[0]);
-            props.onChange(data);
+            // props.onChange(data);
             // base64类型
             let reader = new FileReader();
             reader.onload = (e) => {

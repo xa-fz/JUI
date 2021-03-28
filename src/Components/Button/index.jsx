@@ -34,7 +34,7 @@ const Button = (props) => {
         }
         let btnObj = {};
         btnText.forEach(item => {
-            if (item.title === (type ? type : 'Default')) {
+            if (item.title === (type || 'Default')) {
                 btnObj.btnStyle = item.styleName;
                 btnObj.textName = item.text
             }
@@ -49,13 +49,13 @@ const Button = (props) => {
         return (
             <button
                 style={basicStyle}
-                className={'jui-btn ' + btnObj.btnStyle + ` ${className ? className : ""}`}
+                className={'jui-btn ' + btnObj.btnStyle + ` ${className || ""}`}
                 onClick={ clkBtn }
                 disabled={ disable }
             >
                 {icons}
                 {
-                    children ? children : (text ? text : btnObj.textName)
+                    children ? children : (text || btnObj.textName)
                 }
             </button>
         )

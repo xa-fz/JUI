@@ -104,7 +104,7 @@ export default class Modal extends Component{
                     {
                         headerStatus && 
                         <div className='dialog-header'>
-                            <span className='dialog-title'>{title ? title : ''}</span>
+                            <span className='dialog-title'>{title || ''}</span>
                             {
                                 showClose &&  
                                 <div className='fl-r' onClick={() => this.props.cancel()}>

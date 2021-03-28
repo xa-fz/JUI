@@ -1,21 +1,17 @@
 import React,{useContext, useState, useMemo } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.less';
 import ComponentTree from './ComponentTree/ComponentTree';
 import { ThemeContext } from './Contexts/theme-context';
 import Theme from './Theme';
 
-const App = (props) => {
+const App = () => {
   const [showComponent, set_showComponent] = useState(<React.Fragment></React.Fragment>);
   const [themeStatus, set_themeStatus] = useState(false);
   const theme = useContext(ThemeContext)[0];
-  const [path, set_path] = useState('');
   const themeStyle = useMemo(() => theme.name, [theme]);
 
   const getComponent = myRoute => {
     console.log(myRoute);
-    props.history.push(`/jui/${myRoute.path}`);
-    set_path(myRoute.path);
     set_showComponent(myRoute.component);
   }
 
@@ -38,11 +34,13 @@ const App = (props) => {
 
       <div className='rightPage'>
         <div className="codeContent">
- 
+{/*  
           <Router>
             <Route exact path={`/jui/${path}`} component={showComponent} />
-          </Router>
-        
+          </Router> */}
+        {
+          showComponent
+        }
         </div>
       </div>
       <Theme themeStatus={themeStatus} />
