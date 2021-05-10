@@ -1,11 +1,32 @@
 .jui-pagination {
+    margin-top: 20px;
     float: right;
-    display: flex;
-    flex-direction: row;
-    .pagination-back {
-
+    user-select: none;
+    .pageJump {
+        display: inline-block;
+        margin-right: 10px;
+        input {
+            width: 50px;
+            height: 30px;
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid #9c9c9c;
+        }
     }
-    .pagination-forward {
-        
+    .pageToLeft, .pageToRight, .pageNum {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border: 1px solid #9c9c9c;
+        text-align: center;
+        border-radius: 4px;
+        margin-right: 10px;
+        cursor: pointer;
     }
+    .pageToLeft:hover, .pageToRight:hover {
+        color: #1890FF;
+        border-color: #1890FF;
+    }
+    
 }

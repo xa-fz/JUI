@@ -15,11 +15,11 @@ export default class Table extends Component{
 
     componentDidMount () {
         const { datasource, pagination } = this.props;
-        const obj = { pageSize: 0, currentSize: 0 }
+        const obj = { pageSize: 0, currentPage: 0 };
         let showPagination = false;
         if (pagination) {
-            obj.pageSize = pagination.pageSize ? pagination.pageSize : 5;
-            obj.currentSize = pagination.currentSize ? pagination.currentSize : 1;
+            obj.pageSize = pagination.pageSize || 5;
+            obj.currentPage = pagination.currentPage || 1;
             showPagination = true;
         }
         this.setState({
@@ -111,6 +111,7 @@ export default class Table extends Component{
                 {
                     showPagination && <Pagination {...pagination}/>
                 }
+                <div style={{clear: 'both'}}></div>
             </> 
         )
     }
