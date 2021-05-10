@@ -92,6 +92,10 @@ export default class TableContent extends Component{
                 key: 'heigh',
                 sorted: {
                     compare: (a, b) => a.heigh - b.heigh
+                },
+                render: (h, data) => {
+                    console.log(h, data);
+                    return h
                 }
             },
             {

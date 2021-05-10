@@ -57,11 +57,13 @@ export default class Table extends Component{
             let tdArrd = [];
             for (let j = 0; j < columns.length; j++) {
                 let TD = <td key={columns[j].key}>
-                    {datasource[i][columns[j].dataIndex]}
+                    {
+                        columns[j].render ? columns[j].render(datasource[i][columns[j].dataIndex], datasource[i]) : datasource[i][columns[j].dataIndex]
+                    }
                 </td>
                 tdArrd.push(TD);
             }
-            let TR = <tr key={datasource[i].key}>{tdArrd}</tr>
+            let TR = <tr key={datasource[i].key + i}>{tdArrd}</tr>
             trArrs.push(TR);
         }
         let iconStyle = {
