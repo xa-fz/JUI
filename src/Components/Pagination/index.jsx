@@ -2,24 +2,33 @@ import React, { useEffect, useState } from 'react';
 import './pagination.less';
 
 const Pagination = (props) => {
-    const [page_info, set_page_info] = useState({currentPage: 1, pageSize: 5});
-    const [pagesize_arr, set_pagesize_arr] = useState([]);
+    const [page_info, set_page_info] = useState({currentPage: 1, pageSize: 1});
+    const [page_arr, set_page_arr] = useState([]);
 
     useEffect(() => {
-        const {current} = props;
-        console.log(current);
+        const { current } = props;
         let page_info_new = JSON.parse(JSON.stringify(page_info));
         page_info_new.currentPage = current;
         set_page_info(page_info_new);
     }, [props])
 
     useEffect(() => {
-        let pageSizeArr = [];
-        for (let i = 1; i < page_info.pageSize; i++) {
-            pageSizeArr.push(i);
+        let totalPage = 0;
+        if (props.total <= page_info.pageSize) {
+            totalPage = 1
+        } else {
+            if (props.total % page_info.pageSize === 0) {
+                totalPage = props.total / page_info.pageSize
+            } else {
+                totalPage = Math.ceil(props.total / page_info.pageSize)
+            } 
         }
-        set_pagesize_arr(pageSizeArr);
-    }, [page_info.pageSize])
+        let pageArr = [];
+        for (let i = 1; i < totalPage + 1; i++) {
+            pageArr.push(i);
+        }
+        set_page_arr(pageArr);
+    }, [props.total, page_info])
 
     return (
         <div className="jui-pagination">
@@ -34,13 +43,12 @@ const Pagination = (props) => {
 
             }}>{`<`}</div>
             {
-                pagesize_arr.map(s => <div key={s} className="pageNum">
+                page_arr.map(s => <div key={s} className="pageNum">
                     {s}
                 </div>)
             }
-            <div className="pageNum">{page_info.pageSize}</div>
             <div className="pageToRight" onClick={() => {}}>{`>`}</div>
-            <div style={{display: 'inline-block'}}>共{5}页</div>
+            <div style={{display: 'inline-block'}}>共{page_arr[page_arr.length - 1]}页</div>
         </div>
     )
 }
