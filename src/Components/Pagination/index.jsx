@@ -13,7 +13,7 @@ const Pagination = (props) => {
     }, [props])
 
     useEffect(() => {
-        let totalPage = 0;
+        let totalPage = 0, pageArr = [];
         if (props.total <= page_info.pageSize) {
             totalPage = 1
         } else {
@@ -23,7 +23,6 @@ const Pagination = (props) => {
                 totalPage = Math.ceil(props.total / page_info.pageSize)
             } 
         }
-        let pageArr = [];
         for (let i = 1; i < totalPage + 1; i++) {
             pageArr.push(i);
         }
