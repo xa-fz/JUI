@@ -6,6 +6,7 @@ import TableContent from './TableContent';
 import UploadContent from './UploadContent';
 import LayoutContent from './LayoutContent';
 import JVideoContent from './JVideoContent';
+import Pagination from './PaginationContent';
 import './Component.less';
 import J_ICONS from '../utils/urls';
 
@@ -60,6 +61,12 @@ class ComponentTree extends Component{
                         },
                         {
                             id: '02-02',
+                            compName: 'Pagination 分页',
+                            component: <Pagination />,
+                            path: 'paginations'
+                        },
+                        {
+                            id: '02-03',
                             compName: 'H5Video 播放器',
                             component: <JVideoContent />,
                             path: 'h5Videos'

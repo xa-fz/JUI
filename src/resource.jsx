@@ -118,6 +118,12 @@ const RESOURCE = {
             title: '视频宽高属性'
         }
     ],
+    PAGINATION_Arr: [
+        {
+            type: 'basic',
+            title: '基础分页'
+        }
+    ]
 }
 
 export default RESOURCE

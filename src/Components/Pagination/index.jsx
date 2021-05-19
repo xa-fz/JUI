@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import './pagination.less';
 
 const Pagination = (props) => {
@@ -6,11 +6,18 @@ const Pagination = (props) => {
     const [pagesize_arr, set_pagesize_arr] = useState([]);
 
     useEffect(() => {
+        const {current} = props;
+        console.log(current);
+        let page_info_new = JSON.parse(JSON.stringify(page_info));
+        page_info_new.currentPage = current;
+        set_page_info(page_info_new);
+    }, [props])
+
+    useEffect(() => {
         let pageSizeArr = [];
         for (let i = 1; i < page_info.pageSize; i++) {
             pageSizeArr.push(i);
         }
-        console.log(pageSizeArr);
         set_pagesize_arr(pageSizeArr);
     }, [page_info.pageSize])
 
