@@ -5,29 +5,29 @@ const Pagination = (props) => {
     const [page_info, set_page_info] = useState({currentPage: 1, pageSize: 1});
     const [page_arr, set_page_arr] = useState([]);
 
-    useEffect(() => {
-        const { current } = props;
-        let page_info_new = JSON.parse(JSON.stringify(page_info));
-        page_info_new.currentPage = current;
-        set_page_info(page_info_new);
-    }, [props])
-
-    useEffect(() => {
+    // 获取属性并处理数据
+    useEffect(() =>{
+        const { total, pageSize, current } = props;
+        console.log(total, pageSize, current);
         let totalPage = 0, pageArr = [];
-        if (props.total <= page_info.pageSize) {
+        if (props.total <= pageSize) {
             totalPage = 1
         } else {
-            if (props.total % page_info.pageSize === 0) {
-                totalPage = props.total / page_info.pageSize
+            if (props.total % pageSize === 0) {
+                totalPage = props.total / pageSize
             } else {
-                totalPage = Math.ceil(props.total / page_info.pageSize)
+                totalPage = Math.ceil(props.total / pageSize)
             } 
         }
         for (let i = 1; i < totalPage + 1; i++) {
             pageArr.push(i);
         }
         set_page_arr(pageArr);
-    }, [props.total, page_info])
+        let page_info_new = {};
+        page_info_new.currentPage = current;
+        page_info_new.pageSize = pageSize;
+        set_page_info(page_info_new);
+    }, [props])
 
     return (
         <div className="jui-pagination">
@@ -39,15 +39,24 @@ const Pagination = (props) => {
                 }} /> 页
             </div>
             <div className="pageToLeft" onClick={() => {
-
+                set_page_info(currentState => {
+                    currentState.currentPage > 1 && currentState.currentPage--;
+                    return {...currentState, currentPage: currentState.currentPage}
+                })
             }}>{`<`}</div>
             {
-                page_arr.map(s => <div key={s} className="pageNum">
+                page_arr.map(s => <div key={s} onClick={() => set_page_info(currentState => ({...currentState, currentPage: s}))}
+                    className={`pageNum ${s === page_info.currentPage && 'borderChoosed'}`}>
                     {s}
                 </div>)
             }
-            <div className="pageToRight" onClick={() => {}}>{`>`}</div>
-            <div style={{display: 'inline-block'}}>共{page_arr[page_arr.length - 1]}页</div>
+            <div className="pageToRight" onClick={() => {
+                set_page_info(currentState => {
+                    currentState.currentPage < page_arr.length && currentState.currentPage++;
+                    return {...currentState, currentPage: currentState.currentPage}
+                })
+            }}>{`>`}</div>
+            <div style={{display: 'inline-block'}}>每页{page_info.pageSize}条</div>
         </div>
     )
 }

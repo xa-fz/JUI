@@ -1,3 +1,5 @@
+@themeColor: #1890FF;
+
 .jui-pagination {
     margin-top: 20px;
     user-select: none;
@@ -24,8 +26,16 @@
         cursor: pointer;
     }
     .pageToLeft:hover, .pageToRight:hover {
-        color: #1890FF;
-        border-color: #1890FF;
+        color: @themeColor;
+        border-color: @themeColor;
     }
-    
+    .borderChoosed {
+        border-color: @themeColor;
+        color: @themeColor;
+        font-weight: bold;
+    }
+    .pageNum:active {
+        border-color: @themeColor;
+        color: @themeColor;
+    }
 }
