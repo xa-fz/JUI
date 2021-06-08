@@ -15,6 +15,15 @@ class Utils {
     _format = t => {
         return t < 10 ? `0${t}` : t
     }
+
+    // 函数防抖
+    timer = null;
+    debounce = (func, time) => {
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+            typeof func === 'function' && func();
+        }, time)
+    }
 }
 
 export default Utils
