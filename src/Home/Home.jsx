@@ -45,9 +45,10 @@ const Home = (props) => {
                 {now_date}
             </div>
             <div className="content">
-                <div title="click me!" className="welcome" onClick={() => {
+                <div className="welcome">welcome to JUI</div>
+                <div title="click me!" className="start" onClick={() => {
                     props.history.push("/jui")
-                }}>welcome to JUI</div>
+                }}>开始使用</div>
             </div>
             {/* <div onClick={() => getNew()}>Home</div> */}
         </div>

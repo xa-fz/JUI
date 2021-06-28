@@ -44,7 +44,7 @@ export default class ModalContent extends Component{
                 case 'modal-normal':
                 item.showComponent = 
                 <div className='modalBorder modalTypeNormal'>
-                    <div className="display mr-20">
+                    <div className="display-inline mr-20">
                         <Button type='Primary' text='Open Modal' handleClick={this.handleClick} buttonStyle={{width: '120px'}}/>
                         <Modal
                             hasClose={true}
@@ -57,7 +57,7 @@ export default class ModalContent extends Component{
                             </div>
                         </Modal>
                     </div>
-                    <div className="display mr-20">
+                    <div className="display-inline mr-20">
                         <Button type='Default' text='click mask' handleClick={() => this.setState({isOpenB: !this.state.isOpenB})} buttonStyle={{width: '120px'}}/>
                         <Modal
                             hasClose={true}
@@ -71,7 +71,7 @@ export default class ModalContent extends Component{
                             </div>
                         </Modal>
                     </div>
-                    <div className="display mr-20">
+                    <div className="display-inline mr-20">
                         <Button type='Default' text='no mask' handleClick={() => this.setState({isOpenC: !this.state.isOpenC})} buttonStyle={{width: '120px'}}/>
                         <Modal
                             hasClose={true}
@@ -85,7 +85,7 @@ export default class ModalContent extends Component{
                             </div>
                         </Modal>
                     </div>
-                    <div className="display v-top">
+                    <div className="display-inline v-top">
                         <Button type='Default' text='no footer and title' handleClick={() => this.setState({isOpenA: !this.state.isOpenA})}/>
                         <Modal
                             hasClose={true}
@@ -102,25 +102,25 @@ export default class ModalContent extends Component{
                 break;
                 case 'modal-tips':
                     item.showComponent = <div className='modalBorder modalTipsInfo'>
-                        <div className="display mr-20">
+                        <div className="display-inline mr-20">
                             <Button type='Default' handleClick={() => this.prompts.info('info', 'info title!', <div>this is a message!!</div>)} buttonStyle={{width: '120px'}}>
                                 info
                             </Button>
                             <Prompt promptRef={p => this.prompts = p}/>
                         </div>
-                        <div className="display mr-20">
+                        <div className="display-inline mr-20">
                             <Button type='Default' handleClick={() => this.prompts.success('success', 'successful!', <div>this is a successful message!!</div>)} buttonStyle={{width: '120px'}}>
                                 succes
                             </Button>
                             <Prompt promptRef={p => this.prompts = p}/>
                         </div>
-                        <div className="display mr-20">
+                        <div className="display-inline mr-20">
                             <Button type='Default' handleClick={() => this.prompts.error('error', 'error!', <div>this is a error message!!</div>)} buttonStyle={{width: '120px'}}>
                                 error
                             </Button>
                             <Prompt promptRef={p => this.prompts = p}/>
                         </div>
-                        <div className="display  v-top">
+                        <div className="display-inline  v-top">
                             <Button type='Default' handleClick={() => this.prompts.warning('warning', 'warning!', <div>this is a warning message!!</div>)} buttonStyle={{width: '120px'}}>
                                 warning
                             </Button>

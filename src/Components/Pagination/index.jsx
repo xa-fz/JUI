@@ -10,13 +10,13 @@ const Pagination = (props) => {
         const { total, pageSize, current } = props;
         console.log(total, pageSize, current);
         let totalPage = 0, pageArr = [];
-        if (props.total <= pageSize) {
+        if (total <= pageSize) {
             totalPage = 1
         } else {
             if (props.total % pageSize === 0) {
-                totalPage = props.total / pageSize
+                totalPage = total / pageSize
             } else {
-                totalPage = Math.ceil(props.total / pageSize)
+                totalPage = Math.ceil(total / pageSize)
             } 
         }
         for (let i = 1; i < totalPage + 1; i++) {
@@ -31,14 +31,17 @@ const Pagination = (props) => {
 
     return (
         <div className="jui-pagination">
-            <div className="pageJump">
+            {
+                props.total && <div className="mr-10 display-inline">Total {props.total} items</div>
+            }
+            <div className="pageJump display-inline">
                 跳转 <input value={page_info.currentPage} type="text" onChange={(e) => {
                     let pageInfo = JSON.parse(JSON.stringify(page_info));
                     Object.assign(pageInfo, { currentPage: e.target.value });
                     set_page_info(pageInfo)
                 }} /> 页
             </div>
-            <div className="pageToLeft" onClick={() => {
+            <div className="pageToLeft display-inline" onClick={() => {
                 set_page_info(currentState => {
                     currentState.currentPage > 1 && currentState.currentPage--;
                     return {...currentState, currentPage: currentState.currentPage}
@@ -46,17 +49,17 @@ const Pagination = (props) => {
             }}>{`<`}</div>
             {
                 page_arr.map(s => <div key={s} onClick={() => set_page_info(currentState => ({...currentState, currentPage: s}))}
-                    className={`pageNum ${s === page_info.currentPage && 'borderChoosed'}`}>
+                    className={`pageNum ${s === page_info.currentPage && 'borderChoosed'} display-inline`}>
                     {s}
                 </div>)
             }
-            <div className="pageToRight" onClick={() => {
+            <div className="pageToRight display-inline" onClick={() => {
                 set_page_info(currentState => {
                     currentState.currentPage < page_arr.length && currentState.currentPage++;
                     return {...currentState, currentPage: currentState.currentPage}
                 })
             }}>{`>`}</div>
-            <div style={{display: 'inline-block'}}>每页{page_info.pageSize}条</div>
+            <div className="display-inline">每页{page_info.pageSize}条</div>
         </div>
     )
 }
