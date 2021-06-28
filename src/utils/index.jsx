@@ -19,8 +19,8 @@ class Utils {
     // 函数防抖
     timer = null;
     debounce = (func, time) => {
-        timer && clearTimeout(timer);
-        timer = setTimeout(() => {
+        this.timer && clearTimeout(this.timer);
+        this.timer = setTimeout(() => {
             typeof func === 'function' && func();
         }, time)
     }

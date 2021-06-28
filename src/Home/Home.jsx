@@ -47,7 +47,7 @@ const Home = (props) => {
             <div className="content">
                 <div title="click me!" className="welcome" onClick={() => {
                     props.history.push("/jui")
-                }}>welcome to JUI!!</div>
+                }}>welcome to JUI</div>
             </div>
             {/* <div onClick={() => getNew()}>Home</div> */}
         </div>
