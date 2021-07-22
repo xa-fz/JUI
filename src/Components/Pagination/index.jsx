@@ -39,10 +39,12 @@ const Pagination = (props) => {
                             if (typeof Number(e.target.value) === 'number' && Number(e.target.value) <= page_arr.length && Number(e.target.value) > 0) {
                                 let pageInfo = JSON.parse(JSON.stringify(page_info));
                                 Object.assign(pageInfo, { currentPage: Number(e.target.value) });
+                                // props.onChange(Number(e.target.value), page_info.pageSize);
                                 set_page_info(pageInfo)
                             }
                         } else {
-                            set_page_info(currentState => ({...currentState, currentPage: 0}))
+                            set_page_info(currentState => ({...currentState, currentPage: 0}));
+                            props.onChange(0, 0);
                         }
                     }} 
                 /> 页
@@ -57,11 +59,15 @@ const Pagination = (props) => {
                 <div className="pageToLeft display-inline" onClick={() => {
                     set_page_info(currentState => {
                         currentState.currentPage > 1 && currentState.currentPage--;
+                        // props.onChange(currentState.currentPage, page_info.pageSize);
                         return {...currentState, currentPage: currentState.currentPage}
                     })
                 }}>{`<`}</div>
                 {
-                    page_arr.map(s => <div key={s} onClick={() => set_page_info(currentState => ({...currentState, currentPage: s}))}
+                    page_arr.map(s => <div key={s} onClick={() => {
+                        props.handleChange(s, page_info.pageSize);
+                        set_page_info(currentState => ({...currentState, currentPage: s}));   
+                    }}
                         className={`pageNum ${s === page_info.currentPage && 'borderChoosed'} display-inline`}>
                         {s}
                     </div>)
@@ -69,6 +75,7 @@ const Pagination = (props) => {
                 <div className="pageToRight display-inline" onClick={() => {
                     set_page_info(currentState => {
                         currentState.currentPage < page_arr.length && currentState.currentPage++;
+                        // props.onChange(currentState.currentPage, page_info.pageSize);
                         return {...currentState, currentPage: currentState.currentPage}
                     })
                 }}>{`>`}</div>

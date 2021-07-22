@@ -114,7 +114,7 @@ export default class TableContent extends Component{
             switch(item.type) {
                 case 'tab-basic':
                     item.showComponent = 
-                    <Table columns={columns} datasource={data} pagination={{current: 1}}/>                 
+                    <Table columns={columns} datasource={data} pagination={{current: 1, pageSize: 2}}/>                 
                 break;
                 case 'tab-arrangement':
                     item.showComponent = 

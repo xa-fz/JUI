@@ -15,19 +15,26 @@ export default class Table extends Component{
 
     componentDidMount () {
         const { datasource, pagination } = this.props;
-        const obj = { defaultCurrent: 1, current: 1, total: 0 };
+        const obj = { };
         let showPagination = false;
         if (pagination) {
-            obj.defaultCurrent = 1;
             obj.current = pagination.current; //当前页数
             obj.total = datasource.length;   //总条数
+            obj.pageSize = pagination.pageSize;
             showPagination = true;
         }
         this.setState({
-            datasource,
+            datasource: this.querySourceData(datasource, obj.current, obj.pageSize),
             pagination: obj,
             showPagination
         })
+    }
+
+    // 查询数据
+    querySourceData = (data, current, pageSize) => {
+        const startIndex = (current - 1) * pageSize;
+        const endIndex = startIndex + pageSize;
+        return data.slice(startIndex, endIndex)
     }
 
     // 升序、降序排列
@@ -110,7 +117,11 @@ export default class Table extends Component{
                     </tbody>
                 </table>
                 {
-                    showPagination && <Pagination {...pagination}/>
+                    showPagination && <Pagination handleChange={(current, pagesize) => {
+                        this.setState({
+                            datasource: this.querySourceData(this.props.datasource, current, pagesize)
+                        })
+                    }} {...pagination}/>
                 }
                 <div style={{clear: 'both'}}></div>
             </> 
