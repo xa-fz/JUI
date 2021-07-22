@@ -4,11 +4,12 @@ import './pagination.less';
 const Pagination = (props) => {
     const [page_info, set_page_info] = useState({currentPage: 1, pageSize: 1});
     const [page_arr, set_page_arr] = useState([]);
+    const [jump_page, set_jump_page] = useState(<></>);
+    const [back_previous_jsx, set_back_previous_jsx] = useState(<></>);
 
     // 获取属性并处理数据
     useEffect(() =>{
         const { total, pageSize, current } = props;
-        console.log(total, pageSize, current);
         let totalPage = 0, pageArr = [];
         if (total <= pageSize) {
             totalPage = 1
@@ -29,37 +30,58 @@ const Pagination = (props) => {
         set_page_info(page_info_new);
     }, [props])
 
+    // 眺页
+    useEffect(() => {
+        set_jump_page(
+            <div className="pageJump display-inline">
+                跳转 <input value={page_info.currentPage} type="text" onChange={e => {
+                        if (page_arr.length) {
+                            if (typeof Number(e.target.value) === 'number' && Number(e.target.value) <= page_arr.length && Number(e.target.value) > 0) {
+                                let pageInfo = JSON.parse(JSON.stringify(page_info));
+                                Object.assign(pageInfo, { currentPage: Number(e.target.value) });
+                                set_page_info(pageInfo)
+                            }
+                        } else {
+                            set_page_info(currentState => ({...currentState, currentPage: 0}))
+                        }
+                    }} 
+                /> 页
+            </div>
+        )
+    }, [page_info, page_arr])
+
+    // 切换页数
+    useEffect(() => {
+        set_back_previous_jsx(
+            <>
+                <div className="pageToLeft display-inline" onClick={() => {
+                    set_page_info(currentState => {
+                        currentState.currentPage > 1 && currentState.currentPage--;
+                        return {...currentState, currentPage: currentState.currentPage}
+                    })
+                }}>{`<`}</div>
+                {
+                    page_arr.map(s => <div key={s} onClick={() => set_page_info(currentState => ({...currentState, currentPage: s}))}
+                        className={`pageNum ${s === page_info.currentPage && 'borderChoosed'} display-inline`}>
+                        {s}
+                    </div>)
+                }
+                <div className="pageToRight display-inline" onClick={() => {
+                    set_page_info(currentState => {
+                        currentState.currentPage < page_arr.length && currentState.currentPage++;
+                        return {...currentState, currentPage: currentState.currentPage}
+                    })
+                }}>{`>`}</div>
+            </>
+        )
+    }, [page_arr, page_info])
+
     return (
         <div className="jui-pagination">
-            {
-                props.total && <div className="mr-10 display-inline">Total {props.total} items</div>
-            }
-            <div className="pageJump display-inline">
-                跳转 <input value={page_info.currentPage} type="text" onChange={(e) => {
-                    let pageInfo = JSON.parse(JSON.stringify(page_info));
-                    Object.assign(pageInfo, { currentPage: e.target.value });
-                    set_page_info(pageInfo)
-                }} /> 页
-            </div>
-            <div className="pageToLeft display-inline" onClick={() => {
-                set_page_info(currentState => {
-                    currentState.currentPage > 1 && currentState.currentPage--;
-                    return {...currentState, currentPage: currentState.currentPage}
-                })
-            }}>{`<`}</div>
-            {
-                page_arr.map(s => <div key={s} onClick={() => set_page_info(currentState => ({...currentState, currentPage: s}))}
-                    className={`pageNum ${s === page_info.currentPage && 'borderChoosed'} display-inline`}>
-                    {s}
-                </div>)
-            }
-            <div className="pageToRight display-inline" onClick={() => {
-                set_page_info(currentState => {
-                    currentState.currentPage < page_arr.length && currentState.currentPage++;
-                    return {...currentState, currentPage: currentState.currentPage}
-                })
-            }}>{`>`}</div>
-            <div className="display-inline">每页{page_info.pageSize}条</div>
+            { props.total && <div className="mr-10 display-inline">Total {props.total} items</div> }
+            { jump_page }
+            { back_previous_jsx }
+            <div className="display-inline">每页 {page_info.pageSize} 条</div>
         </div>
     )
 }
