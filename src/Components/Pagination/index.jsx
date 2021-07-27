@@ -10,6 +10,7 @@ const Pagination = (props) => {
     // 获取属性并处理数据
     useEffect(() =>{
         const { total, pageSize, current } = props;
+        // 排列计算总页数
         let totalPage = 0, pageArr = [];
         if (total <= pageSize) {
             totalPage = 1
@@ -50,7 +51,7 @@ const Pagination = (props) => {
                 /> 页
             </div>
         )
-    }, [page_info, page_arr])
+    }, [page_info, page_arr, props])
 
     // 切换页数
     useEffect(() => {
@@ -81,7 +82,7 @@ const Pagination = (props) => {
                 }}>{`>`}</div>
             </>
         )
-    }, [page_arr, page_info])
+    }, [page_arr, page_info, props])
 
     return (
         <div className="jui-pagination">
