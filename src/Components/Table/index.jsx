@@ -12,20 +12,23 @@ let iconStyle = {
 
 const Table = (props) =>{
     const [datasource, set_datasource] = useState([]);
-    const [pagination_info, set_pagination] = useState({});
+    const [pagination_info, set_pagination] = useState({current: 1, pageSize: 2});
     const [showPagination, set_showPagination] = useState(true);
     const [tr_Arrs, set_tr_Arrs] = useState([]);
 
     useEffect(() => {
         const { datasource, pagination } = props;
         let obj = { }, data = datasource;
-        let showPagination = false;
+        obj.total = datasource.length;   //总条数
+        let showPagination = true;
         if (pagination) {
             obj.current = pagination.current; //当前页数
-            obj.total = datasource.length;   //总条数
             obj.pageSize = pagination.pageSize;
-            showPagination = true;
-            data = querySourceData(datasource, pagination.current, pagination.pageSize);
+            showPagination = false;
+        } else {
+            data = querySourceData(datasource, pagination_info.current, pagination_info.pageSize);
+            obj.current = 1; //当前页数
+            obj.pageSize = 2;
         }
         set_pagination(obj);
         set_datasource(data);
@@ -114,7 +117,7 @@ const Table = (props) =>{
             </table>
             {
                 showPagination && <Pagination handleChange={(current, pagesize) => {
-                    props.pagination.onChange(current);
+                    // props.pagination.onChange(current);
                     set_pagination((currentState) => ({...currentState, current, pageSize: pagesize}));
                     set_datasource(querySourceData(props.datasource, current, pagesize))
                 }} {...pagination_info}/>

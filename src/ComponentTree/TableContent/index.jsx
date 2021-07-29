@@ -103,20 +103,13 @@ let columns1 = [
 
 const TableContent = () => {
     const [currentComponent, set_currentComponent] = useState([]);
-    const [current, set_current] = useState(1); // 当前页数
 
     useEffect(() => {
         RESOURCE.TABLE_INFO_ARR.forEach(item => {
             switch(item.type) {
                 case 'tab-basic':
                     item.showComponent = 
-                    <Table columns={columns} datasource={data}  pagination={{
-                        current,
-                        pageSize: 2,
-                        onChange: (currentPage) => {
-                            set_current(currentPage);
-                        }
-                    }}/>                 
+                    <Table columns={columns} datasource={data}  />                 
                 break;
                 case 'tab-arrangement':
                     item.showComponent = 
@@ -127,7 +120,7 @@ const TableContent = () => {
             }
         })
         set_currentComponent(RESOURCE.TABLE_INFO_ARR);
-    }, [current])
+    }, [])
 
     return (
         <ComponentLayout
