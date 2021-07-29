@@ -12,7 +12,7 @@ let iconStyle = {
 
 const Table = (props) =>{
     const [datasource, set_datasource] = useState([]);
-    const [pagination, set_pagination] = useState({});
+    const [pagination_info, set_pagination] = useState({});
     const [showPagination, set_showPagination] = useState(true);
     const [tr_Arrs, set_tr_Arrs] = useState([]);
 
@@ -25,12 +25,13 @@ const Table = (props) =>{
             obj.total = datasource.length;   //总条数
             obj.pageSize = pagination.pageSize;
             showPagination = true;
-            data = querySourceData(datasource, pagination.current, pagination.pageSize)
+            data = querySourceData(datasource, pagination.current, pagination.pageSize);
         }
-        set_datasource(data);
         set_pagination(obj);
+        set_datasource(data);
         set_showPagination(showPagination);
-    }, [props])
+         // eslint-disable-next-line
+    }, [])
 
     useEffect(() => {
         const { columns } = props;
@@ -77,48 +78,49 @@ const Table = (props) =>{
 
     return (
         <>
-                <table className="jui-table">
-                    <thead className="jui-thead">
-                        <tr>
-                            {
-                                props.columns && props.columns.length > 0 && props.columns.map(v => 
-                                    <th key={v.title} >
-                                        <div className='tab-title'>{v.title}</div>
-                                        {
-                                            v.sorted && 
-                                            <div className='tab-sorting'>
-                                                <div className='tab-icon'>
-                                                    <div className='increase' title='升序'>
-                                                        <Icon handleClick={() => sorting(v.dataIndex, (a, b) => a - b)} 
-                                                            style={Object.assign(iconStyle, {})} type='increasing'
-                                                        />
-                                                    </div>
-                                                    <div className='decrease' title='降序'>
-                                                        <Icon handleClick={() => sorting(v.dataIndex, (a, b) => b - a)} 
-                                                            style={Object.assign(iconStyle, {})} type='decreasing'
-                                                        />
-                                                    </div>
+            <table className="jui-table">
+                <thead className="jui-thead">
+                    <tr>
+                        {
+                            props.columns && props.columns.length > 0 && props.columns.map(v => 
+                                <th key={v.title} >
+                                    <div className='tab-title'>{v.title}</div>
+                                    {
+                                        v.sorted && 
+                                        <div className='tab-sorting'>
+                                            <div className='tab-icon'>
+                                                <div className='increase' title='升序'>
+                                                    <Icon handleClick={() => sorting(v.dataIndex, (a, b) => a - b)} 
+                                                        style={Object.assign(iconStyle, {})} type='increasing'
+                                                    />
+                                                </div>
+                                                <div className='decrease' title='降序'>
+                                                    <Icon handleClick={() => sorting(v.dataIndex, (a, b) => b - a)} 
+                                                        style={Object.assign(iconStyle, {})} type='decreasing'
+                                                    />
                                                 </div>
                                             </div>
-                                        }
-                                    </th>
-                                )
-                            }
-                        </tr>
-                    </thead>
+                                        </div>
+                                    }
+                                </th>
+                            )
+                        }
+                    </tr>
+                </thead>
 
-                    <tbody className="jui-tbody">
-                        {tr_Arrs}
-                    </tbody>
-                </table>
-                {
-                    showPagination && <Pagination handleChange={(current, pagesize) => {
-                        props.pagination.onChange(current);
-                        set_datasource(querySourceData(props.datasource, current, pagesize))
-                    }} {...pagination}/>
-                }
-                <div style={{clear: 'both'}}></div>
-            </> 
+                <tbody className="jui-tbody">
+                    {tr_Arrs}
+                </tbody>
+            </table>
+            {
+                showPagination && <Pagination handleChange={(current, pagesize) => {
+                    props.pagination.onChange(current);
+                    set_pagination((currentState) => ({...currentState, current, pageSize: pagesize}));
+                    set_datasource(querySourceData(props.datasource, current, pagesize))
+                }} {...pagination_info}/>
+            }
+            <div style={{clear: 'both'}}></div>
+        </> 
     )
 }
 

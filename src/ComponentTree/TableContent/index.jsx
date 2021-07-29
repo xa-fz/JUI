@@ -106,7 +106,6 @@ const TableContent = () => {
     const [current, set_current] = useState(1); // 当前页数
 
     useEffect(() => {
-        console.log('当前page', current);
         RESOURCE.TABLE_INFO_ARR.forEach(item => {
             switch(item.type) {
                 case 'tab-basic':
@@ -115,7 +114,6 @@ const TableContent = () => {
                         current,
                         pageSize: 2,
                         onChange: (currentPage) => {
-                            console.log('改变：', currentPage);
                             set_current(currentPage);
                         }
                     }}/>                 
