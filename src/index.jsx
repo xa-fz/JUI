@@ -9,14 +9,38 @@ import App from './App';
 import Home from './Home/home';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './Contexts/theme-context';
+import { IntlProvider } from 'react-intl';
+import zh_CN from './i18n/zh_CN';
+import en_US from './i18n/en_US';
+
+const getLang = (l) => {
+    let lang = '';
+    switch(l) {
+        case 'en_US':
+            lang = en_US;
+            break;
+        case 'zh_CN':
+            lang = zh_CN;
+            break;
+        default:
+            lang = zh_CN;
+            break;
+    }
+    return lang
+}
 
 ReactDOM.render(
         <Provider store={store}>
             <ThemeProvider>
-                <Router>
-                    <Route exact path='/' component={Home}></Route>
-                    <Route path='/jui' component={App}></Route>
-                </Router>
+                <IntlProvider
+                    locale={'zh'}
+                    messages={getLang('zh_CN')}
+                >
+                    <Router>
+                        <Route exact path='/' component={Home}></Route>
+                        <Route path='/jui' component={App}></Route>
+                    </Router>
+                </IntlProvider>
             </ThemeProvider>
         </Provider>
     , 

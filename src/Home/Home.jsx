@@ -6,6 +6,7 @@ import Utils from '../utils';
 import { happyNewYear } from '../resources/pic';
 import worker_script from '../webworkers';
 import './home.less';
+import { FormattedMessage } from 'react-intl';
 
 const utils = new Utils();
 
@@ -45,7 +46,7 @@ const Home = (props) => {
                 {now_date}
             </div>
             <div className="content">
-                <div className="welcome">welcome to JUI</div>
+                <div className="welcome"><FormattedMessage id="welcome"/></div>
                 <div className="start" onClick={() => {
                     props.history.push("/jui")
                 }}>开始使用</div>
