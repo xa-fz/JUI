@@ -58,11 +58,11 @@ const Pagination = (props) => {
         set_back_previous_jsx(
             <>
                 <div className="pageToLeft display-inline" onClick={() => {
-                    set_page_info(currentState => {
-                        currentState.currentPage > 1 && currentState.currentPage--;
-                        // props.onChange(currentState.currentPage, page_info.pageSize);
-                        return {...currentState, currentPage: currentState.currentPage}
-                    })
+                    if (page_info.currentPage > 1) {
+                        let new_current = page_info.currentPage - 1;
+                        new_current && set_page_info(currentState => ({...currentState, currentPage: new_current}))
+                        props.handleChange && props.handleChange(new_current, page_info.pageSize);
+                    }
                 }}>{`<`}</div>
                 {
                     page_arr.map(s => <div key={s} onClick={() => {
@@ -74,11 +74,11 @@ const Pagination = (props) => {
                     </div>)
                 }
                 <div className="pageToRight display-inline" onClick={() => {
-                    set_page_info(currentState => {
-                        currentState.currentPage < page_arr.length && currentState.currentPage++;
-                        // props.onChange(currentState.currentPage, page_info.pageSize);
-                        return {...currentState, currentPage: currentState.currentPage}
-                    })
+                    if (page_info.currentPage < page_arr.length) {
+                        let new_current = page_info.currentPage + 1;
+                        new_current && set_page_info(currentState => ({...currentState, currentPage: new_current}))
+                        props.handleChange && props.handleChange(new_current, page_info.pageSize);
+                    }
                 }}>{`>`}</div>
             </>
         )

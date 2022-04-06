@@ -57,6 +57,7 @@ const Table = (props) =>{
 
     // 查询数据
     const querySourceData = (data, current, pageSize) => {
+        console.log(data, current, pageSize);
         const startIndex = (current - 1) * pageSize;
         const endIndex = startIndex + pageSize;
         return data.slice(startIndex, endIndex)
@@ -117,6 +118,7 @@ const Table = (props) =>{
             </table>
             {
                 showPagination && <Pagination handleChange={(current, pagesize) => {
+                    console.log(current, pagesize);
                     // props.pagination.onChange(current);
                     set_pagination((currentState) => ({...currentState, current, pageSize: pagesize}));
                     set_datasource(querySourceData(props.datasource, current, pagesize))
