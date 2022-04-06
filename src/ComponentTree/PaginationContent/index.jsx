@@ -12,7 +12,7 @@ const PaginationContent = () => {
             switch(item.type) {
                 case 'basic':
                     item.showComponent = 
-                    <Pagination total={20} current={1} pageSize={5}/>
+                        <Pagination total={20} current={1} pageSize={5}/>
                     break;
                 default:
                     break;

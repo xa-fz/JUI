@@ -66,7 +66,7 @@ const Pagination = (props) => {
                 }}>{`<`}</div>
                 {
                     page_arr.map(s => <div key={s} onClick={() => {
-                        props.handleChange(s, page_info.pageSize);
+                        props.handleChange && props.handleChange(s, page_info.pageSize);
                         set_page_info(currentState => ({...currentState, currentPage: s}));   
                     }}
                         className={`pageNum ${s === page_info.currentPage && 'borderChoosed'} display-inline`}>
