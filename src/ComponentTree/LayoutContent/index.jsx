@@ -5,6 +5,8 @@ import RESOURCE from '../../resource';
 
 const { Header } = Layout;
 
+console.log(Header);
+
 const LayoutContent = () => {
     const [layout_arr, set_layout_arr] = useState([]);
 
@@ -15,9 +17,9 @@ const LayoutContent = () => {
                 case 'layout-basic':
                     item.showComponent = 
                     <Layout>
-                        <Header>
+                        <div>
                             头部
-                        </Header>
+                        </div>
                     </Layout>
                     break;
                 default:
