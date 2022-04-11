@@ -1,5 +1,6 @@
 import React,{useContext, useState, useMemo } from 'react';
 import './App.less';
+import './styles/common.less';
 import ComponentTree from './ComponentTree/ComponentTree';
 import { ThemeContext } from './Contexts/theme-context';
 import Theme from './Theme';

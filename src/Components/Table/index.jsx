@@ -57,7 +57,6 @@ const Table = (props) =>{
 
     // 查询数据
     const querySourceData = (data, current, pageSize) => {
-        console.log(data, current, pageSize);
         const startIndex = (current - 1) * pageSize;
         const endIndex = startIndex + pageSize;
         return data.slice(startIndex, endIndex)
