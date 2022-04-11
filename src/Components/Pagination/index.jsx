@@ -40,7 +40,7 @@ const Pagination = (props) => {
                             if (typeof Number(e.target.value) === 'number' && Number(e.target.value) <= page_arr.length && Number(e.target.value) > 0) {
                                 let pageInfo = JSON.parse(JSON.stringify(page_info));
                                 Object.assign(pageInfo, { currentPage: Number(e.target.value) });
-                                // props.onChange(Number(e.target.value), page_info.pageSize);
+                                props.handleChange && props.handleChange(Number(e.target.value), page_info.pageSize);
                                 set_page_info(pageInfo)
                             }
                         } else {
