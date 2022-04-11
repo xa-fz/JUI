@@ -39,12 +39,13 @@ const Table = (props) =>{
     useEffect(() => {
         const { columns } = props;
         let trArrs = [];
-        for (let i= 0; i < datasource.length; i++) {
+        for (let i= 0; i < datasource.length; i++) { // 循环行
             let tdArrd = [];
-            for (let j = 0; j < columns.length; j++) {
+            for (let j = 0; j < columns.length; j++) { // 循环列
                 let TD = <td key={columns[j].key}>
                     {
-                        columns[j].render ? columns[j].render(datasource[i][columns[j].dataIndex], datasource[i]) : datasource[i][columns[j].dataIndex]
+                        columns[j].render ? columns[j].render(datasource[i][columns[j].dataIndex], datasource[i]):
+                         datasource[i][columns[j].dataIndex]
                     }
                 </td>
                 tdArrd.push(TD);
