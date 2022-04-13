@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from './store';
 import './index.css';
 import App from './App';
-import Home from './Home/home';
+import Home from './Home/Home';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './Contexts/theme-context';
 import { IntlProvider } from 'react-intl';
@@ -43,7 +43,7 @@ ReactDOM.render(
                 </IntlProvider>
             </ThemeProvider>
         </Provider>
-    , 
+    ,
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

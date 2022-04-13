@@ -15,11 +15,11 @@ const LayoutContent = () => {
         layoutArr.forEach(item => {
             switch(item.type) {
                 case 'layout-basic':
-                    item.showComponent = 
+                    item.showComponent =
                     <Layout>
-                        <div>
+                        <Header>
                             头部
-                        </div>
+                        </Header>
                     </Layout>
                     break;
                 default:
@@ -30,10 +30,10 @@ const LayoutContent = () => {
     }, [])
 
     return (
-        <ComponentLayout 
+        <ComponentLayout
             head='Layout 布局'
             className={{
-                layoutBodyStyle: 'layoutContent', 
+                layoutBodyStyle: 'layoutContent',
                 componentStyle: 'layoutComponent'
             }}
             data={layout_arr}

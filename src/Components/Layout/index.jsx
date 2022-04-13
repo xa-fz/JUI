@@ -4,7 +4,6 @@ import './layout.less';
 
 const Layout = (props) => {
     const { children } = props;
-    console.log(children);
 
     return (
         <div className="jui-layout">
@@ -13,4 +12,10 @@ const Layout = (props) => {
     )
 }
 
-export default Layout
+const header = (props) => {
+    console.log(props);
+    return <header>{props.children}</header>
+}
+
+Layout.Header = header;
+export default Layout;
