@@ -37,6 +37,10 @@ const RESOURCE = {
         {
             type: 'tab-arrangement',
             title: '含排列功能表格'
+        },
+        {
+            type: 'tab-config-header',
+            title: '可配置表头'
         }
     ],
     ICONS_NAME_ARR: [

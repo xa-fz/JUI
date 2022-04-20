@@ -115,6 +115,10 @@ const TableContent = () => {
                     item.showComponent = 
                     <Table columns={columns1} datasource={data1} />
                 break;
+                case 'tab-config-header':
+                    item.showComponent = 
+                    <Table columns={columns} datasource={data} configHeader={true} />
+                break;
                 default:
                 break;
             }

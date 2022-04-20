@@ -11,13 +11,18 @@ let iconStyle = {
 }
 
 const Table = (props) =>{
-    const [datasource, set_datasource] = useState([]);
+    const {
+        configHeader,
+        columns,
+        datasource,
+        pagination
+    } = props;
+    const [data_source, set_data_source] = useState([]);
     const [pagination_info, set_pagination] = useState({current: 1, pageSize: 2});
     const [showPagination, set_showPagination] = useState(true);
     const [tr_Arrs, set_tr_Arrs] = useState([]);
 
     useEffect(() => {
-        const { datasource, pagination } = props;
         let obj = { }, data = datasource;
         obj.total = datasource.length;   //总条数
         let showPagination = true;
@@ -31,30 +36,29 @@ const Table = (props) =>{
             obj.pageSize = 2;
         }
         set_pagination(obj);
-        set_datasource(data);
+        set_data_source(data);
         set_showPagination(showPagination);
          // eslint-disable-next-line
-    }, [])
+    }, [datasource, pagination])
 
     useEffect(() => {
-        const { columns } = props;
         let trArrs = [];
-        for (let i= 0; i < datasource.length; i++) { // 循环行
+        for (let i= 0; i < data_source.length; i++) { // 循环行
             let tdArrd = [];
             for (let j = 0; j < columns.length; j++) { // 循环列
                 let TD = <td key={columns[j].key}>
                     {
-                        columns[j].render ? columns[j].render(datasource[i][columns[j].dataIndex], datasource[i]):
-                         datasource[i][columns[j].dataIndex]
+                        columns[j].render ? columns[j].render(data_source[i][columns[j].dataIndex], data_source[i]):
+                        data_source[i][columns[j].dataIndex]
                     }
                 </td>
                 tdArrd.push(TD);
             }
-            let TR = <tr key={datasource[i].key + i}>{tdArrd}</tr>
+            let TR = <tr key={data_source[i].key + i}>{tdArrd}</tr>
             trArrs.push(TR);
         }
         set_tr_Arrs(trArrs);
-    }, [datasource, props])
+    }, [data_source, columns])
 
     // 查询数据
     const querySourceData = (data, current, pageSize) => {
@@ -66,19 +70,19 @@ const Table = (props) =>{
     // 升序、降序排列
     const sorting = useCallback((column, way) => {
         let valArr = [], newDataSource = [];
-        datasource.forEach(v => {
+        data_source.forEach(v => {
             valArr.push(v[column]);
         });
         valArr.sort(way);
         valArr.forEach(v => {
-            datasource.forEach(item => {
+            data_source.forEach(item => {
                 if (item[column] === v) {
                     newDataSource.push(item);
                 }
             })
         })
-        set_datasource(newDataSource);
-    }, [datasource])
+        set_data_source(newDataSource);
+    }, [data_source])
 
     return (
         <>
@@ -86,7 +90,7 @@ const Table = (props) =>{
                 <thead className="jui-thead">
                     <tr>
                         {
-                            props.columns && props.columns.length > 0 && props.columns.map(v => 
+                            columns && columns.length > 0 && columns.map(v => 
                                 <th key={v.title} >
                                     <div className='tab-title'>{v.title}</div>
                                     {
@@ -109,6 +113,11 @@ const Table = (props) =>{
                                 </th>
                             )
                         }
+                        {
+                            configHeader && <div onClick={() => {
+                                    
+                            }} className="config_column text-right">配置</div>
+                        }
                     </tr>
                 </thead>
 
@@ -121,7 +130,7 @@ const Table = (props) =>{
                     console.log(current, pagesize);
                     // props.pagination.onChange(current);
                     set_pagination((currentState) => ({...currentState, current, pageSize: pagesize}));
-                    set_datasource(querySourceData(props.datasource, current, pagesize))
+                    set_data_source(querySourceData(datasource, current, pagesize))
                 }} {...pagination_info}/>
             }
             <div style={{clear: 'both'}}></div>
