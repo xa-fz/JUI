@@ -2,16 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // Provider是react-redux两个核心工具之一，作用：将store传递到每个项目中的组件中
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import store from './store';
 import './index.css';
-import App from './App';
-import Home from './Home/home';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './Contexts/theme-context';
+import { GlobalDataProvider } from './Contexts/global-data';
 import { IntlProvider } from 'react-intl';
 import zh_CN from './i18n/zh_CN';
 import en_US from './i18n/en_US';
+import AppContent from './AppContent';
 
 const getLang = (l) => {
     let lang = '';
@@ -31,17 +30,16 @@ const getLang = (l) => {
 
 ReactDOM.render(
         <Provider store={store}>
-            <ThemeProvider>
-                <IntlProvider
-                    locale={'zh'}
-                    messages={getLang('zh_CN')}
-                >
-                    <Router>
-                        <Route exact path='/' component={Home}></Route>
-                        <Route path='/jui' component={App}></Route>
-                    </Router>
-                </IntlProvider>
-            </ThemeProvider>
+            <GlobalDataProvider>
+                <ThemeProvider>
+                    <IntlProvider
+                        locale={'zh'}
+                        messages={getLang('zh_CN')}
+                    >
+                       <AppContent />
+                    </IntlProvider>
+                </ThemeProvider>
+            </GlobalDataProvider>
         </Provider>
     ,
 document.getElementById('root'));

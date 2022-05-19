@@ -115,8 +115,8 @@ const Table = (props) =>{
                         }
                         {
                             configHeader && <div onClick={() => {
-                                    
-                            }} className="config_column text-right">配置</div>
+
+                            }} className="config_column text-right"><Icon style={{width: '1.5em', height: '1.5em'}} type="unorderedList" /></div>
                         }
                     </tr>
                 </thead>

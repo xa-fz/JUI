@@ -91,6 +91,10 @@ const RESOURCE = {
         {
             name: 'Theme',
             type: 'theme'
+        },
+        {
+            name: 'UnorderedList',
+            type: 'unorderedList'
         }
     ],
     UPLOAD_ARR: [

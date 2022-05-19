@@ -3,18 +3,22 @@ import './App.less';
 import './styles/common.less';
 import ComponentTree from './ComponentTree/ComponentTree';
 import { ThemeContext } from './Contexts/theme-context';
+import { GlobalDataContext } from './Contexts/global-data';
 import Theme from './Theme';
 
-const App = () => {
-  const [showComponent, set_showComponent] = useState(<React.Fragment></React.Fragment>);
+const App = (props) => {
+  const [global_data, set_global_data] = useContext(GlobalDataContext);
   const [themeStatus, set_themeStatus] = useState(false);
   const theme = useContext(ThemeContext)[0];
   const themeStyle = useMemo(() => theme.name, [theme]);
 
   const getComponent = myRoute => {
-    console.log(myRoute);
-    set_showComponent(myRoute.component);
+    console.log('路由：', myRoute);
+    props.history.push(`/jui/${myRoute.path}`);
+    set_global_data((data) => ({...data, current_component: myRoute.component}))
   }
+
+  console.log(props);
 
   const cancelTheme = () => {
     set_themeStatus(!themeStatus);
@@ -35,13 +39,8 @@ const App = () => {
 
       <div className='rightPage'>
         <div className="codeContent">
-{/*  
-          <Router>
-            <Route exact path={`/jui/${path}`} component={showComponent} />
-          </Router> */}
-        {
-          showComponent
-        }
+          {/* { props.children } */}
+          {global_data.current_component}
         </div>
       </div>
       <Theme themeStatus={themeStatus} />
