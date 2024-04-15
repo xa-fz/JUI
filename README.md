@@ -1,6 +1,10 @@
 ## JUI
 A front-end component library based on reactJs
 
+## version
+node 16.20.2
+react 16.8.6
+
 ## Available Scripts
 
 In the project directory, you can run:
