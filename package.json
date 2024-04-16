@@ -1,6 +1,6 @@
 {
-  "name": "jui",
-  "version": "0.1.0",
+  "name": "y",
+  "version": "y",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
@@ -136,5 +136,10 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "description": "JUI",
+  "main": "index.js",
+  "repository": "https://github.com/xa-fz/JUI.git",
+  "author": "fz <553866469@qq.com>",
+  "license": "MIT"
 }
