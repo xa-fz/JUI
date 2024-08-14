@@ -3,11 +3,12 @@ import './App.less';
 import './styles/common.less';
 import ComponentTree from './ComponentTree/ComponentTree';
 import { ThemeContext } from './Contexts/theme-context';
-import { GlobalDataContext } from './Contexts/global-data';
 import Theme from './Theme';
+import { useAtom } from 'jotai';
+import { globalAtom } from './utils/atoms';
 
 const App = (props) => {
-  const [global_data, set_global_data] = useContext(GlobalDataContext);
+  const [global_data, set_global_data] = useAtom(globalAtom);
   const [themeStatus, set_themeStatus] = useState(false);
   const theme = useContext(ThemeContext)[0];
   const themeStyle = useMemo(() => theme.name, [theme]);
@@ -17,8 +18,6 @@ const App = (props) => {
     props.history.push(`/jui/${myRoute.path}`);
     set_global_data((data) => ({...data, current_component: myRoute.component}))
   }
-
-  console.log(props);
 
   const cancelTheme = () => {
     set_themeStatus(!themeStatus);

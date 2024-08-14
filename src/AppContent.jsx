@@ -1,11 +1,12 @@
-import React,{ useContext } from 'react';
+import React from 'react';
 import {  BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { GlobalDataContext } from './Contexts/global-data';
 import App from './App';
 import Home from './Home/home';
+import { useAtom } from 'jotai';
+import { globalAtom } from './utils/atoms';
 
 const AppContent = () => {
-    const global_data = useContext(GlobalDataContext)[0];
+    const global_data = useAtom(globalAtom)[0];
     const CurrentComp = global_data.current_component;
 
     return (

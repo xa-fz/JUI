@@ -6,7 +6,6 @@ import store from './store';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { ThemeProvider } from './Contexts/theme-context';
-import { GlobalDataProvider } from './Contexts/global-data';
 import { IntlProvider } from 'react-intl';
 import zh_CN from './i18n/zh_CN';
 import en_US from './i18n/en_US';
@@ -30,16 +29,14 @@ const getLang = (l) => {
 
 ReactDOM.render(
         <Provider store={store}>
-            <GlobalDataProvider>
-                <ThemeProvider>
-                    <IntlProvider
-                        locale={'zh'}
-                        messages={getLang('zh_CN')}
-                    >
-                       <AppContent />
-                    </IntlProvider>
-                </ThemeProvider>
-            </GlobalDataProvider>
+            <ThemeProvider>
+                <IntlProvider
+                    locale={'zh'}
+                    messages={getLang('zh_CN')}
+                >
+                    <AppContent />
+                </IntlProvider>
+            </ThemeProvider>
         </Provider>
     ,
 document.getElementById('root'));
