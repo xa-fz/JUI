@@ -10,6 +10,7 @@ import { IntlProvider } from 'react-intl';
 import zh_CN from './i18n/zh_CN';
 import en_US from './i18n/en_US';
 import AppContent from './AppContent';
+import 'animate.css';
 
 const getLang = (l) => {
     let lang = '';
